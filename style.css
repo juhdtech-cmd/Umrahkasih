@@ -91,25 +91,25 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .hero h1 em{margin-top:3px}
   .hero p{
     font-size:13px;
-    line-height:1.48;
-    max-width:270px;
+    line-height:1.5;
+    max-width:238px;
     margin:0;
   }
   .hero-actions{
-    width:272px;
-    margin-top:18px;
+    width:232px;
+    margin-top:16px;
   }
   .hero-actions a{
-    height:48px;
-    border-radius:26px;
-    padding:0 18px;
-    gap:12px;
-    font-size:14.5px;
+    height:42px;
+    border-radius:23px;
+    padding:0 15px;
+    gap:10px;
+    font-size:13px;
   }
-  .hero-actions b{font-size:19px}
+  .hero-actions b{font-size:17px}
   .search-icon{width:19px;height:19px;border-width:2.5px}
   .search-icon:after{height:2.5px;width:8px;right:-7px;bottom:-3px}
-  .grid-icon{width:20px;height:20px;gap:2px}
+  .grid-icon{width:17px;height:17px;gap:2px}
 
   /* no extra white gap after wave */
   .packages{
@@ -124,6 +124,6 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
 @media(max-width:390px){
   .hero-content{padding-left:16px;padding-right:16px}
   .hero h1{font-size:32px}
-  .hero p{font-size:12.5px;max-width:255px}
-  .hero-actions{width:260px}
+  .hero p{font-size:12.5px;max-width:226px}
+  .hero-actions{width:222px}
 }
