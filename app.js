@@ -20,7 +20,6 @@ setLang(localStorage.getItem('uk-lang')||'ms');
 
   const monthGrid=document.getElementById('monthGrid');
   const ramadhanGrid=document.getElementById('ramadhanGrid');
-  const syawalGrid=document.getElementById('syawalGrid');
   const helper=document.getElementById('monthHelper');
 
   const minR=document.getElementById('budgetMin');
@@ -61,6 +60,17 @@ setLang(localStorage.getItem('uk-lang')||'ms');
     specials.forEach(x=>x.classList.remove('active'));
   }
 
+  function unlockAll(){
+    months.forEach(x=>{
+      x.disabled=false;
+      x.classList.remove('dimmed','locked');
+    });
+    specials.forEach(x=>{
+      x.disabled=false;
+      x.classList.remove('locked');
+    });
+  }
+
   function initialState(){
     season=null;
     clearChoice();
@@ -68,43 +78,66 @@ setLang(localStorage.getItem('uk-lang')||'ms');
 
     monthGrid.hidden=false;
     ramadhanGrid.hidden=true;
-    syawalGrid.hidden=true;
 
-    months.forEach(x=>{
-      x.classList.remove('dimmed');
-      x.disabled=false;
-    });
-
+    unlockAll();
     helper.textContent='Pilih bulan yang anda rancang untuk berangkat';
   }
 
   function renderSeason(s){
     season=s;
     clearChoice();
+    unlockAll();
 
     seasons.forEach(x=>x.classList.toggle('active',x.dataset.season===s));
 
-    monthGrid.hidden=(s==='ramadhan'||s==='syawal');
-    ramadhanGrid.hidden=s!=='ramadhan';
-    syawalGrid.hidden=s!=='syawal';
-
-    months.forEach(x=>{
-      x.classList.remove('dimmed');
-      x.disabled=false;
-    });
+    // Jan-Dec always stay visible.
+    monthGrid.hidden=false;
 
     if(s==='school'){
+      ramadhanGrid.hidden=true;
       helper.textContent='Hanya bulan cuti sekolah Malaysia ditonjolkan';
+
       months.forEach(x=>{
         const enabled=schoolMonths.has(x.dataset.month);
         x.classList.toggle('dimmed',!enabled);
         x.disabled=!enabled;
       });
+
     } else if(s==='ramadhan'){
+      // Jan-Dec remain visible but faded and cannot be clicked.
+      months.forEach(x=>{
+        x.disabled=true;
+        x.classList.add('locked');
+      });
+
+      // Only 4 Ramadhan options can be clicked.
+      ramadhanGrid.hidden=false;
+      specials.forEach(x=>{
+        x.disabled=false;
+        x.classList.remove('locked');
+      });
+
       helper.textContent='Pilih tempoh Ramadhan yang anda inginkan';
+
     } else if(s==='syawal'){
-      helper.textContent='Hanya Syawal 2027 tersedia untuk pilihan';
+      // No Syawal button in Bulan Cadangan.
+      // Selecting Syawal above is sufficient; Syawal 2027 is implied.
+      months.forEach(x=>{
+        x.disabled=true;
+        x.classList.add('locked');
+      });
+
+      ramadhanGrid.hidden=false;
+      specials.forEach(x=>{
+        x.disabled=true;
+        x.classList.add('locked');
+      });
+
+      period='Syawal 2027';
+      helper.textContent='Syawal 2027 dipilih secara automatik';
+
     } else {
+      ramadhanGrid.hidden=true;
       helper.textContent='Pilih bulan yang anda rancang untuk berangkat';
     }
   }
@@ -125,6 +158,7 @@ setLang(localStorage.getItem('uk-lang')||'ms');
 
   specials.forEach(x=>{
     x.addEventListener('click',()=>{
+      if(x.disabled) return;
       specials.forEach(y=>y.classList.remove('active'));
       x.classList.add('active');
       period=x.dataset.period;
