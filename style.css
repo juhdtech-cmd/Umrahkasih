@@ -217,3 +217,87 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .why-cta{min-width:205px;height:43px;font-size:12.5px}
   .why-signature{position:absolute;right:18px;bottom:28px;font-size:20px;max-width:155px}
 }
+
+
+/* Compact trust cards on mobile */
+@media(max-width:767px){
+  .credential-grid{gap:8px}
+
+  .credential-card{
+    padding:11px 12px;
+    border-radius:13px;
+    min-height:0;
+  }
+
+  .org-mark,.logo-box{
+    height:42px;
+  }
+
+  .motac-mark{
+    font-size:27px;
+  }
+
+  .mof-mark{
+    font-size:34px;
+  }
+
+  .logo-box img{
+    max-height:42px;
+    max-width:112px;
+  }
+
+  .org-sub{
+    font-size:7.8px;
+    line-height:1.15;
+    margin-top:0;
+  }
+
+  .cred-band{
+    margin:7px 0 7px;
+    padding:4px 7px;
+    border-radius:14px;
+    font-size:8.5px;
+  }
+
+  .credential-card h3{
+    font-size:12.5px;
+    margin:0 0 5px;
+  }
+
+  .credential-card p{
+    font-size:9.8px;
+    line-height:1.32;
+    max-width:330px;
+    margin:0 auto;
+  }
+
+  .cred-link{
+    margin-top:8px;
+    min-height:31px;
+    border-radius:17px;
+    font-size:9.8px;
+    gap:9px;
+  }
+
+  .cred-link span{
+    font-size:12px;
+  }
+
+  .why-divider{
+    margin-top:18px;
+  }
+}
+
+/* Two credential cards only: MOTAC + PAPUH */
+.credential-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  max-width:820px;
+  margin-left:auto;
+  margin-right:auto;
+}
+@media(max-width:767px){
+  .credential-grid{
+    grid-template-columns:1fr !important;
+    max-width:100%;
+  }
+}
