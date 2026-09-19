@@ -47,7 +47,7 @@
       </p>
 
       <div class="hero-actions">
-        <a class="cta-primary" href="#packages">
+        <a class="cta-primary" href="#finder">
           <span data-ms="Pakej Tersedia" data-en="Available Packages">Pakej Tersedia</span>
           <b>&gt;</b>
         </a>
@@ -55,7 +55,59 @@
     </div>
   </section>
 
-  <section id="packages" class="packages">
+  
+<section id="finder" class="baitullah-finder">
+  <div class="finder-shell">
+    <div class="finder-heading">
+      <div class="finder-kicker">PILIHAN PERJALANAN</div>
+      <h2>Pilihan Menuju Baitullah</h2>
+      <p>Cari pakej umrah yang sesuai dengan masa, bajet dan perancangan perjalanan anda.</p>
+    </div>
+
+    <div class="finder-block">
+      <div class="finder-label-row"><h3>Pilihan Waktu</h3><span>Pilih mengikut masa perjalanan anda</span></div>
+      <div class="time-grid">
+        <button type="button" class="choice-btn" data-season="normal">Musim Biasa</button>
+        <button type="button" class="choice-btn" data-season="school">Cuti Sekolah</button>
+        <button type="button" class="choice-btn" data-season="ramadhan">Ramadhan</button>
+        <button type="button" class="choice-btn" data-season="syawal">Syawal</button>
+      </div>
+    </div>
+
+    <div class="finder-divider"></div>
+
+    <div class="finder-block">
+      <div class="finder-label-row"><h3>Pilihan Budget</h3><span>Pilih julat bajet perjalanan anda</span></div>
+      <div class="budget-box">
+        <div id="budgetValue" class="budget-value">RM 5,500 – RM 30,000</div>
+        <div class="range-wrap">
+          <div class="range-track"></div><div id="rangeFill" class="range-fill"></div>
+          <input id="budgetMin" class="range-input" type="range" min="5500" max="30000" step="500" value="5500" aria-label="Bajet minimum">
+          <input id="budgetMax" class="range-input" type="range" min="5500" max="30000" step="500" value="30000" aria-label="Bajet maksimum">
+        </div>
+        <div class="budget-limits"><span>RM 5,500</span><span>RM 30,000</span></div>
+      </div>
+    </div>
+
+    <div class="finder-divider"></div>
+
+    <div class="finder-block">
+      <div class="finder-label-row"><h3>Bulan Cadangan</h3><span id="monthHelper">Pilih bulan yang anda rancang untuk berangkat</span></div>
+      <div id="monthGrid" class="month-grid">
+        <button type="button" class="month-btn" data-month="Jan">Jan</button><button type="button" class="month-btn" data-month="Feb">Feb</button><button type="button" class="month-btn" data-month="Mac">Mac</button><button type="button" class="month-btn" data-month="Apr">Apr</button><button type="button" class="month-btn" data-month="Mei">Mei</button><button type="button" class="month-btn" data-month="Jun">Jun</button>
+        <button type="button" class="month-btn" data-month="Jul">Jul</button><button type="button" class="month-btn" data-month="Ogos">Ogos</button><button type="button" class="month-btn" data-month="Sep">Sep</button><button type="button" class="month-btn" data-month="Okt">Okt</button><button type="button" class="month-btn" data-month="Nov">Nov</button><button type="button" class="month-btn" data-month="Dis">Dis</button>
+      </div>
+      <div id="ramadhanGrid" class="special-grid" hidden>
+        <button type="button" class="special-btn" data-period="Awal Ramadhan">Awal Ramadhan</button><button type="button" class="special-btn" data-period="Pertengahan Ramadhan">Pertengahan Ramadhan</button><button type="button" class="special-btn" data-period="10 Akhir Ramadhan">10 Akhir Ramadhan</button><button type="button" class="special-btn" data-period="Sebulan Ramadhan">Sebulan Ramadhan</button>
+      </div>
+      <div id="syawalGrid" class="special-grid syawal-grid" hidden><button type="button" class="special-btn" data-period="Syawal 2027">Syawal 2027</button></div>
+    </div>
+
+    <div class="finder-actions"><button type="button" id="finderSearch" class="finder-search">Cari Pakej <span>&gt;</span></button><button type="button" id="finderReset" class="finder-reset">Reset</button></div>
+  </div>
+</section>
+
+<section id="packages" class="packages">
     <div class="eyebrow">PAKEJ UMRAH KAMI</div>
     <h2 data-ms="Pilih Pakej Umrah Anda" data-en="Choose Your Umrah Package">Pilih Pakej Umrah Anda</h2>
     <p data-ms="Empat pilihan pakej untuk pengalaman umrah yang sesuai dengan keperluan anda."
