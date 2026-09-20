@@ -190,3 +190,53 @@ setLang(localStorage.getItem('uk-lang')||'ms');
   updateBudget();
   initialState();
 })();
+
+// ===============================
+// V55 — WhatsApp + enquiry
+// Isi nombor sebenar dalam waStaff apabila diterima.
+// ===============================
+const UK_CONTACT_CONFIG = {
+  enquiryEmail: '',
+  waStaff: [
+    // { name:'Nama Sales', role:'Konsultan Umrah', phone:'60123456789' }
+  ]
+};
+
+(() => {
+  const widget=document.getElementById('waWidget'), toggle=document.getElementById('waToggle'), panel=document.getElementById('waPanel'), list=document.getElementById('waStaffList');
+  if(!widget||!toggle||!list) return;
+  const pageContext=()=>document.title || 'UmrahKasih';
+  const msg=(staff)=>`Assalamualaikum ${staff.name}. Saya sedang melayari UmrahKasih dan ingin mendapatkan maklumat lanjut. Halaman: ${pageContext()}`;
+  if(UK_CONTACT_CONFIG.waStaff.length){
+    UK_CONTACT_CONFIG.waStaff.forEach(staff=>{
+      const a=document.createElement('a');
+      a.href=`https://wa.me/${staff.phone.replace(/\D/g,'')}?text=${encodeURIComponent(msg(staff))}`;
+      a.target='_blank'; a.rel='noopener';
+      a.innerHTML=`<span><b>${staff.name}</b><small>${staff.role||'Konsultan Umrah'}</small></span><i>›</i>`;
+      list.appendChild(a);
+    });
+  } else {
+    list.innerHTML='<div class="v55-wa-placeholder">Sales staff akan dipaparkan di sini selepas nombor WhatsApp dimasukkan.</div>';
+  }
+  toggle.addEventListener('click',()=>{
+    const open=widget.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false'); panel.setAttribute('aria-hidden',open?'false':'true');
+  });
+  document.addEventListener('click',e=>{if(!widget.contains(e.target)){widget.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+})();
+
+(() => {
+  const form=document.getElementById('enquiryForm'), status=document.getElementById('enquiryStatus');
+  if(!form) return;
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!UK_CONTACT_CONFIG.enquiryEmail){
+      status.textContent='Borang sudah siap. Alamat e-mail syarikat perlu dimasukkan untuk mengaktifkan penghantaran.';
+      return;
+    }
+    const d=new FormData(form);
+    const subject=`Pertanyaan UmrahKasih — ${d.get('topic')}`;
+    const body=`Nama: ${d.get('name')}\nWhatsApp: ${d.get('phone')}\nE-mail: ${d.get('email')}\nTopik: ${d.get('topic')}\n\nPertanyaan:\n${d.get('message')}`;
+    location.href=`mailto:${UK_CONTACT_CONFIG.enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
