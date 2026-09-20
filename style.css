@@ -621,3 +621,36 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .packages{padding-bottom:42px!important;}
   .testimony-video-section{padding-top:58px!important;}
 }
+
+/* V47 — Paparan 2: Kata Jemaah + 37 Perjalanan */
+.pilgrim-voices-section{background:#f8f3e8;padding:88px 24px 104px;overflow:hidden}
+.pilgrim-voices-wrap{max-width:1080px;margin:0 auto}
+.pilgrim-voices-head{text-align:center;max-width:760px;margin:0 auto 34px}
+.pilgrim-voices-kicker{font:700 12px/1.2 Arial,sans-serif;letter-spacing:.28em;color:#b38a3b;margin-bottom:12px}
+.pilgrim-voices-head h2{margin:0;color:#075b50;font:500 52px/1.02 Georgia,'Times New Roman',serif}
+.pilgrim-voices-head p{max-width:620px;margin:16px auto 0;color:#707572;font:400 16px/1.55 Arial,sans-serif}
+.pilgrim-quote-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pilgrim-quote-card{background:#fff;border:1px solid #e4d9c5;border-radius:22px;padding:10px 10px 18px;box-shadow:0 12px 34px rgba(55,67,61,.045)}
+.pilgrim-proof-placeholder{aspect-ratio:4/3;border:1px dashed #d5c6ad;border-radius:15px;background:linear-gradient(145deg,#f4efe5,#ebe4d8);display:flex;align-items:center;justify-content:center;color:#a09a90;font:700 10px/1 Arial,sans-serif;letter-spacing:.18em}
+.pilgrim-quote-placeholder{margin:15px 7px 12px;color:#4f5754;font:400 14px/1.5 Arial,sans-serif}
+.pilgrim-meta{display:flex;flex-direction:column;gap:3px;padding:0 7px}.pilgrim-meta strong{color:#075b50;font:700 14px/1.2 Arial,sans-serif}.pilgrim-meta span{color:#92938d;font:400 11px/1.2 Arial,sans-serif}
+.journey-proof-card{margin-top:22px;background:#fff;border:1px solid #e4d9c5;border-radius:24px;padding:25px 28px;display:grid;grid-template-columns:210px 1px 1fr;gap:28px;align-items:center}
+.journey-count{display:flex;align-items:center;gap:16px}.journey-count strong{color:#b38a3b;font:500 64px/1 Georgia,'Times New Roman',serif}.journey-count span{color:#075b50;font:700 13px/1.35 Arial,sans-serif}.journey-divider{height:72px;background:#e7dece}
+.journey-label{color:#b38a3b;font:700 10px/1 Arial,sans-serif;letter-spacing:.18em}.journey-latest h3{margin:8px 0 12px;color:#075b50;font:500 27px/1.1 Georgia,'Times New Roman',serif}.journey-latest h3 span{color:#b38a3b}.journey-facts{display:flex;gap:9px;flex-wrap:wrap}.journey-facts span{border:1px solid #e6dccb;border-radius:999px;padding:7px 11px;color:#777d79;font:600 10px/1 Arial,sans-serif;background:#fbf8f1}
+.journey-archive-cta{margin-top:18px;border-radius:24px;background:#075b50;padding:28px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px}.journey-archive-cta>div>span{color:#d4ad5b;font:700 10px/1 Arial,sans-serif;letter-spacing:.2em}.journey-archive-cta h3{margin:9px 0 0;color:#fff;font:500 31px/1.05 Georgia,'Times New Roman',serif}.journey-archive-cta a{min-width:260px;text-align:center;text-decoration:none;border-radius:999px;background:#f4e6c7;color:#075b50;padding:15px 18px;font:700 13px/1 Arial,sans-serif}.journey-archive-cta a b{margin-left:12px;font-size:20px;vertical-align:-1px}
+@media(max-width:767px){
+ .testimony-video-section{padding-bottom:34px!important}
+ .pilgrim-voices-section{padding:38px 26px 68px}
+ .pilgrim-voices-head{margin-bottom:24px}
+ .pilgrim-voices-kicker{font-size:10px;margin-bottom:10px}
+ .pilgrim-voices-head h2{font-size:38px;line-height:1.03}
+ .pilgrim-voices-head p{font-size:14px;line-height:1.5;max-width:330px;margin-top:12px}
+ .pilgrim-quote-row{display:flex;overflow-x:auto;gap:11px;padding:0 1px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}.pilgrim-quote-row::-webkit-scrollbar{display:none}
+ .pilgrim-quote-card{min-width:84%;scroll-snap-align:start;border-radius:18px;padding:8px 8px 15px}
+ .pilgrim-proof-placeholder{border-radius:12px}
+ .pilgrim-quote-placeholder{font-size:12px;margin:12px 6px 10px}.pilgrim-meta{padding:0 6px}.pilgrim-meta strong{font-size:12px}.pilgrim-meta span{font-size:10px}
+ .journey-proof-card{margin-top:13px;border-radius:19px;padding:20px 17px;display:block}
+ .journey-count{justify-content:flex-start}.journey-count strong{font-size:56px}.journey-count span{font-size:12px}.journey-divider{height:1px;width:100%;margin:17px 0}
+ .journey-latest h3{font-size:24px;margin:7px 0 11px}.journey-facts{gap:6px}.journey-facts span{font-size:9px;padding:6px 8px}
+ .journey-archive-cta{margin-top:13px;border-radius:19px;padding:22px 18px;display:block}.journey-archive-cta h3{font-size:27px}.journey-archive-cta a{display:block;min-width:0;margin-top:19px;padding:14px 12px;font-size:12px}
+}
