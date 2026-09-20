@@ -848,3 +848,25 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .v50-video-card,.v50-review{scroll-snap-align:none!important}
   .v50-video-card video.v50-video-box{touch-action:pan-y!important}
 }
+
+/* V67 — full-card swipe surface on iPhone/Safari.
+   Video itself does not capture the gesture; the parent row/card does. */
+@media (max-width:767px){
+  .v50-video-row,.v50-review-row{
+    touch-action:pan-y!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .v50-video-card,.v50-review{
+    touch-action:pan-y!important;
+    -webkit-user-select:none!important;
+    user-select:none!important;
+  }
+  .v50-video-card video.v50-video-box{
+    pointer-events:none!important;
+    touch-action:none!important;
+  }
+  .v50-video-card b,.v50-review blockquote,.v50-review b,.v50-review small,.v50-stars{
+    -webkit-user-select:none!important;
+    user-select:none!important;
+  }
+}

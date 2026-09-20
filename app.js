@@ -303,3 +303,39 @@ const UK_CONTACT_CONFIG = {
     }, true);
   });
 })();
+
+/* V67 — tap anywhere on a video card to play/pause while preserving full-card swipe. */
+(() => {
+  document.querySelectorAll('.v50-video-card').forEach((card) => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    let x0 = 0, y0 = 0, dragged = false;
+
+    card.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+      dragged = false;
+    }, {passive:true});
+
+    card.addEventListener('touchmove', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - x0;
+      const dy = e.touches[0].clientY - y0;
+      if (Math.hypot(dx, dy) > 8) dragged = true;
+    }, {passive:true});
+
+    card.addEventListener('touchend', () => {
+      if (dragged) return;
+      document.querySelectorAll('.v50-video-card video').forEach(v => {
+        if (v !== video && !v.paused) v.pause();
+      });
+      if (video.paused) {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, {passive:true});
+  });
+})();
