@@ -260,3 +260,46 @@ const UK_CONTACT_CONFIG = {
     });
   });
 })();
+
+/* V66 — manual horizontal swipe fallback for iOS/Safari rows.
+   Captures horizontal gestures even when they begin on a <video>. */
+(() => {
+  document.querySelectorAll('.v50-video-row, .v50-review-row').forEach((row) => {
+    let startX = 0, startY = 0, startScroll = 0, horizontal = false, moved = false;
+
+    row.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      startScroll = row.scrollLeft;
+      horizontal = false;
+      moved = false;
+      row.classList.add('is-dragging');
+    }, {passive:true, capture:true});
+
+    row.addEventListener('touchmove', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!horizontal && Math.abs(dx) > 7 && Math.abs(dx) > Math.abs(dy) * 1.08) horizontal = true;
+      if (!horizontal) return;
+      moved = true;
+      if (e.cancelable) e.preventDefault();
+      row.scrollLeft = startScroll - dx;
+    }, {passive:false, capture:true});
+
+    const finish = () => {
+      row.classList.remove('is-dragging');
+      setTimeout(() => { moved = false; }, 80);
+    };
+    row.addEventListener('touchend', finish, {passive:true, capture:true});
+    row.addEventListener('touchcancel', finish, {passive:true, capture:true});
+
+    // Prevent an accidental video play after a real swipe, but keep normal taps working.
+    row.addEventListener('click', (e) => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  });
+})();
