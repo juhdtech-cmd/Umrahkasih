@@ -384,3 +384,38 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .package-card-body{padding:10px 9px 11px;min-height:82px}
   .package-arrow{flex-basis:27px;width:27px;height:27px;font-size:22px}
 }
+
+/* V4.0 — compact package cards matching approved visual */
+@media (max-width:767px){
+  .packages{padding:34px 14px 48px;}
+  .packages>.eyebrow{font-size:9px;letter-spacing:3.2px;margin-bottom:9px;}
+  .packages>h2{font-size:32px;line-height:1.02;max-width:330px;margin:0 auto 12px;}
+  .packages>p{font-size:12.5px;line-height:1.48;max-width:320px;margin:0 auto 22px;}
+  .package-card-grid{
+    width:86%!important;
+    max-width:570px!important;
+    margin:20px auto 0!important;
+    gap:10px!important;
+  }
+  .package-card{border-radius:13px;}
+  .package-visual{aspect-ratio:1.64/1;}
+  .package-card-body{padding:10px 10px 11px;gap:5px;min-height:72px;}
+  .package-card-body h3{font-size:14px;line-height:1.06;margin-bottom:4px;}
+  .package-card-body p{font-size:9px;line-height:1.28;}
+  .package-arrow{flex:0 0 27px;width:27px;height:27px;font-size:21px;margin-top:1px;}
+}
+@media (max-width:390px){
+  .packages>h2{font-size:29px;}
+  .package-card-grid{width:88%!important;gap:8px!important;}
+  .package-card-body{padding:9px 8px 10px;min-height:68px;}
+  .package-card-body h3{font-size:12.5px;}
+  .package-card-body p{font-size:8.3px;}
+  .package-arrow{flex-basis:24px;width:24px;height:24px;font-size:19px;}
+}
+@media (min-width:768px){
+  .package-card-grid{max-width:820px!important;gap:18px!important;}
+  .package-card-body{padding:16px 18px 18px;}
+  .package-card-body h3{font-size:23px;}
+  .package-card-body p{font-size:14px;}
+  .package-arrow{flex-basis:44px;width:44px;height:44px;font-size:32px;}
+}
