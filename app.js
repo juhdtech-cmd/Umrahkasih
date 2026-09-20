@@ -198,7 +198,12 @@ setLang(localStorage.getItem('uk-lang')||'ms');
 const UK_CONTACT_CONFIG = {
   enquiryEmail: '',
   waStaff: [
-    // { name:'Nama Sales', role:'Konsultan Umrah', phone:'60123456789' }
+    { name:'Ustaz Fadh', role:'Konsultan Umrah', phone:'60135890865' },
+    { name:'Ustaz Ihsan', role:'Konsultan Umrah', phone:'60134599260' },
+    { name:'Ustaz Amirul', role:'Konsultan Umrah', phone:'60129761791' },
+    { name:'Cik Sakinah', role:'Konsultan Umrah', phone:'60124964772' },
+    { name:'Cik Aqilah', role:'Konsultan Umrah', phone:'60192549107' },
+    { name:'Puan Su', role:'Konsultan Umrah', phone:'60175848295' }
   ]
 };
 
