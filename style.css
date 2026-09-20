@@ -611,3 +611,13 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
  .testimony-thumb-media{aspect-ratio:4/5;border-radius:11px}
  .testimony-thumb-label{font-size:11px;padding:8px 4px 4px}
 }
+
+/* V46 — tighten transition from package cards to testimonial section */
+@media (max-width:767px){
+  .packages{padding-bottom:18px!important;}
+  .testimony-video-section{padding-top:30px!important;}
+}
+@media (min-width:768px){
+  .packages{padding-bottom:42px!important;}
+  .testimony-video-section{padding-top:58px!important;}
+}
