@@ -703,3 +703,30 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
 .testimony-video-head,.pilgrim-voices-head,.journey-gallery-head{display:none!important}
 }
 @media(min-width:768px){.v50-section{display:none}}
+/* V51 — tighter mobile rhythm, text-first banners, real airline logos, no decorative icons */
+@media(max-width:767px){
+  .v50-experience{padding-top:2px!important}
+  .v50-voices{padding-top:8px!important}
+  .v50-gallery{padding-top:8px!important}
+  .v50-title-graphic{filter:none}
+  /* The approved title graphics are already cream-faded; soften the photographic side further */
+  .v50-title-graphic{opacity:.96}
+  .v50-video-row{padding-top:10px!important}
+  .v50-pills{padding-top:9px!important}
+  .v50-review-row{padding-top:2px!important}
+  .v50-quote{margin-top:18px!important;margin-bottom:4px!important}
+  .gallery-quote{margin-top:20px!important}
+  .v50-video-box span{display:none!important}
+  .v50-airline{padding:15px 14px 14px!important}
+  .v50-airline p{margin-right:0!important;margin-bottom:12px!important}
+  .v50-airline-badge,.v50-airline-names{display:none!important}
+  .v51-airline-group{margin-top:11px}
+  .v51-airline-label{font:700 8px/1 Arial,sans-serif;letter-spacing:.18em;color:#b6842f;margin:0 0 7px 2px}
+  .v51-airline-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .v51-airline-logos>div{height:52px;border:1px solid #eee5d8;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;padding:6px;overflow:hidden}
+  .v51-airline-logos img{display:block;max-width:100%;max-height:40px;width:auto;height:auto;object-fit:contain}
+  .v51-airline-logos.direct img[alt="Amal by Malaysia Airlines"]{max-height:45px}
+  .v50-stats strong{font-size:18px!important}
+  .v50-gallery-grid figcaption{padding-left:10px!important}
+  .v50-gallery-grid figcaption small{margin-left:0!important}
+}
