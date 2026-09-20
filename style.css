@@ -572,3 +572,42 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
     padding:9px 10px 6px!important;
   }
 }
+
+/* V45 — Testimonial Section 01: Mereka Telah Melaluinya */
+.testimony-video-section{background:#fbf7ed;padding:96px 24px 104px;overflow:hidden}
+.testimony-video-wrap{max-width:1180px;margin:0 auto}
+.testimony-video-head{text-align:center;max-width:760px;margin:0 auto 42px}
+.testimony-kicker{font:700 13px/1.2 Arial,sans-serif;letter-spacing:.28em;color:#b38a3b;margin-bottom:14px}
+.testimony-video-head h2{margin:0;color:#075b50;font-family:Georgia,'Times New Roman',serif;font-size:clamp(46px,5vw,72px);line-height:.98;font-weight:500}
+.testimony-video-head p{margin:20px auto 0;max-width:610px;color:#68706d;font:400 18px/1.55 Arial,sans-serif}
+.testimony-feature{position:relative;max-width:980px;margin:0 auto;border:1px solid #e5dac6;border-radius:28px;background:#fff;padding:14px;box-shadow:0 18px 55px rgba(47,67,60,.08)}
+.testimony-video-placeholder{aspect-ratio:16/9;border-radius:20px;background:linear-gradient(145deg,#f4efe5,#ebe4d8);border:1px dashed #d5c6ad;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.testimony-video-placeholder:before{content:'';width:70px;height:70px;border-radius:50%;border:1px solid rgba(5,91,80,.28);background:rgba(255,255,255,.72)}
+.testimony-video-placeholder:after{content:'VIDEO';position:absolute;color:#8e8d86;font:700 11px/1 Arial,sans-serif;letter-spacing:.2em}
+.testimony-feature-copy{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 14px 10px}
+.testimony-feature-copy h3{margin:0;color:#075b50;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:500}
+.testimony-feature-copy p{margin:6px 0 0;color:#747976;font:400 15px/1.45 Arial,sans-serif}
+.testimony-watch{white-space:nowrap;color:#075b50;font:700 14px/1 Arial,sans-serif;letter-spacing:.04em}
+.testimony-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:18px auto 0}
+.testimony-thumb{border:1px solid #e5dac6;border-radius:18px;background:#fff;padding:9px;text-decoration:none}
+.testimony-thumb-media{aspect-ratio:16/10;border-radius:13px;background:#f0ebe2;border:1px dashed #d5c6ad;display:flex;align-items:center;justify-content:center;color:#9b978f;font:700 10px/1 Arial,sans-serif;letter-spacing:.15em}
+.testimony-thumb-label{display:block;padding:11px 7px 6px;color:#075b50;font:700 14px/1.25 Arial,sans-serif}
+@media(max-width:767px){
+ .testimony-video-section{padding:66px 26px 74px}
+ .testimony-video-head{margin-bottom:28px}
+ .testimony-kicker{font-size:10px;letter-spacing:.27em;margin-bottom:11px}
+ .testimony-video-head h2{font-size:43px;line-height:1.02}
+ .testimony-video-head p{font-size:15px;line-height:1.5;margin-top:14px;max-width:330px}
+ .testimony-feature{padding:8px;border-radius:20px}
+ .testimony-video-placeholder{aspect-ratio:4/5;border-radius:15px}
+ .testimony-video-placeholder:before{width:58px;height:58px}
+ .testimony-feature-copy{padding:16px 8px 8px;display:block}
+ .testimony-feature-copy h3{font-size:22px}
+ .testimony-feature-copy p{font-size:13px;margin-top:5px}
+ .testimony-watch{display:inline-block;margin-top:12px;font-size:12px}
+ .testimony-thumbs{display:flex;overflow-x:auto;gap:10px;margin-top:13px;padding:0 1px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+ .testimony-thumbs::-webkit-scrollbar{display:none}
+ .testimony-thumb{min-width:44%;border-radius:15px;padding:6px;scroll-snap-align:start}
+ .testimony-thumb-media{aspect-ratio:4/5;border-radius:11px}
+ .testimony-thumb-label{font-size:11px;padding:8px 4px 4px}
+}
