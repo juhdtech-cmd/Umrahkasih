@@ -654,3 +654,45 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
  .journey-latest h3{font-size:24px;margin:7px 0 11px}.journey-facts{gap:6px}.journey-facts span{font-size:9px;padding:6px 8px}
  .journey-archive-cta{margin-top:13px;border-radius:19px;padding:22px 18px;display:block}.journey-archive-cta h3{font-size:27px}.journey-archive-cta a{display:block;min-width:0;margin-top:19px;padding:14px 12px;font-size:12px}
 }
+
+/* V48 — locked testimonial graphic treatment + credential certificate buttons */
+.cred-actions{margin-top:auto;display:grid;gap:8px;padding-top:13px}.cred-actions .cred-link{margin-top:0;width:100%;font-family:Arial,sans-serif;cursor:pointer}.cred-certificate{color:#8b6423;border-color:#d9bd82;background:linear-gradient(90deg,#fffaf0,#f7ead0,#fffaf0)}
+.testimony-video-section{position:relative;background:linear-gradient(180deg,#fbf7ed 0%,#fffaf2 100%)}
+.testimony-video-section:before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 92% 13%,rgba(181,138,58,.12),transparent 24%),radial-gradient(circle at 4% 28%,rgba(5,91,80,.08),transparent 22%);opacity:.8}
+.testimony-video-wrap,.pilgrim-voices-wrap{position:relative;z-index:1}
+.testimony-video-head{position:relative;padding:38px 44px 34px;border-radius:32px;background:linear-gradient(120deg,rgba(255,255,255,.84),rgba(247,239,220,.65));border:1px solid rgba(196,166,109,.28);overflow:hidden}
+.testimony-video-head:before,.pilgrim-voices-head:before{content:'';position:absolute;width:170px;height:170px;border:1px solid rgba(181,138,58,.16);border-radius:50%;right:-74px;top:-86px;box-shadow:0 0 0 20px rgba(181,138,58,.035),0 0 0 42px rgba(5,91,80,.025)}
+.testimony-video-head:after{content:'';position:absolute;left:-40px;bottom:-64px;width:260px;height:100px;border-radius:50%;border-top:9px solid rgba(5,91,80,.14);transform:rotate(8deg)}
+.pilgrim-voices-section{position:relative;background:linear-gradient(180deg,#faf5e9,#fffaf1)}
+.pilgrim-voices-head{position:relative;padding:36px 42px 30px;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(246,235,210,.48));border:1px solid rgba(196,166,109,.24);overflow:hidden}
+.pilgrim-voices-head:after{content:'“';position:absolute;right:28px;bottom:-12px;color:rgba(181,138,58,.18);font:500 112px/1 Georgia,serif}
+@media(max-width:767px){
+ .credential-card{padding-bottom:13px}.cred-actions{padding-top:10px;gap:7px}.cred-actions .cred-link{min-height:34px;font-size:10.5px}
+ .testimony-video-section{padding-top:28px!important}
+ .testimony-video-head{padding:29px 18px 25px;margin-bottom:18px;border-radius:24px}
+ .testimony-video-head:before{width:120px;height:120px;right:-58px;top:-58px}.testimony-video-head:after{width:180px;bottom:-72px}
+ .pilgrim-voices-section{padding-top:14px!important}
+ .pilgrim-voices-head{padding:28px 16px 24px;margin-bottom:18px;border-radius:23px}
+ .pilgrim-voices-head:before{width:110px;height:110px;right:-55px;top:-55px}.pilgrim-voices-head:after{font-size:76px;right:12px;bottom:-10px}
+}
+
+/* v49 — approved mobile section graphics */
+.mobile-section-graphic{display:none;width:100%;height:auto;vertical-align:middle}
+.journey-gallery-section{background:#f8f4eb;padding:72px 20px}
+.journey-gallery-wrap{max-width:1180px;margin:0 auto}
+.journey-gallery-head{text-align:center;margin:0 auto 28px;max-width:760px}
+.journey-gallery-kicker{font-size:12px;letter-spacing:.22em;color:#b68a3b;font-weight:700;margin-bottom:12px}
+.journey-gallery-head h2{font-family:Georgia,'Times New Roman',serif;color:#075b55;font-size:42px;line-height:1.05;margin:0 0 12px}
+.journey-gallery-head p{color:#66717c;margin:0}
+.journey-gallery-placeholder{min-height:260px;border:1px dashed rgba(7,91,85,.18);border-radius:18px;background:rgba(255,255,255,.34)}
+
+@media (max-width:767px){
+  .mobile-section-graphic{display:block;margin:0;width:100%;max-width:none;border:0;border-radius:0}
+  .testimony-video-section,.pilgrim-voices-section,.journey-gallery-section{padding-top:0!important}
+  .testimony-video-wrap,.pilgrim-voices-wrap,.journey-gallery-wrap{width:100%;max-width:none;margin:0;padding:0}
+  .testimony-video-head,.pilgrim-voices-head,.journey-gallery-head{display:none!important}
+  .testimony-feature,.testimony-thumbs,.pilgrim-quote-row,.journey-proof-card,.journey-archive-cta,.journey-gallery-placeholder{margin-left:16px!important;margin-right:16px!important}
+  .testimony-feature{margin-top:16px!important}
+  .pilgrim-quote-row{margin-top:16px!important}
+  .journey-gallery-placeholder{margin-top:16px!important;min-height:220px}
+}
