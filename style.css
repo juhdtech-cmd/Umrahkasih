@@ -558,3 +558,17 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
     margin-top:5px!important;
   }
 }
+
+/* V4.4 — reduce empty space below package wording; outer card width unchanged */
+@media (max-width:767px){
+  .package-card-body{
+    min-height:0!important;
+    padding:10px 12px 7px!important;
+  }
+}
+@media (max-width:390px){
+  .package-card-body{
+    min-height:0!important;
+    padding:9px 10px 6px!important;
+  }
+}
