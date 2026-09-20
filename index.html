@@ -226,6 +226,43 @@
     <div class="v50-quote gallery-quote">“Bukan sekadar gambar,<br>tetapi kenangan yang akan sentiasa<br>hidup dalam hati.”</div>
   </div>
 </section>
+
+<section id="musawwiq-invite" class="v55-musawwiq">
+  <div class="v55-inner">
+    <div class="v55-kicker">JADI SEBAHAGIAN DARIPADA UMRAHKASIH</div>
+    <h2>Bantu Mereka Menuju Baitullah.<br><em>Jana Pendapatan Bersama Kami.</em></h2>
+    <p>Sertai rangkaian Musawwiq UmrahKasih dan bantu memperkenalkan perjalanan UmrahKasih kepada keluarga, sahabat dan komuniti anda.</p>
+    <a class="v55-primary" href="musawwiq.html">Daftar Sebagai Musawwiq <span>›</span></a>
+  </div>
+</section>
+
+<section id="pertanyaan" class="v55-enquiry">
+  <div class="v55-inner">
+    <div class="v55-kicker">ADA PERTANYAAN?</div>
+    <h2>Kami Sedia Membantu<br>Perjalanan Anda.</h2>
+    <p class="v55-lead">Tinggalkan maklumat ringkas. Pasukan UmrahKasih akan membantu pertanyaan anda.</p>
+    <form id="enquiryForm" class="v55-form">
+      <label>Nama<input name="name" autocomplete="name" required placeholder="Nama penuh"></label>
+      <label>No. WhatsApp<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="Contoh: 60123456789"></label>
+      <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="nama@email.com"></label>
+      <label>Saya ingin bertanya tentang
+        <select name="topic" required><option value="">Pilih</option><option>Pakej Umrah</option><option>Tarikh Pelepasan</option><option>Harga & Pembayaran</option><option>Musawwiq</option><option>Tempahan Berkumpulan</option><option>Lain-lain</option></select>
+      </label>
+      <label>Pertanyaan<textarea name="message" rows="4" required placeholder="Tulis pertanyaan anda"></textarea></label>
+      <button class="v55-primary v55-submit" type="submit">Hantar Pertanyaan <span>›</span></button>
+      <div id="enquiryStatus" class="v55-status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<div class="v55-wa" id="waWidget">
+  <div class="v55-wa-panel" id="waPanel" aria-hidden="true">
+    <div class="v55-wa-head"><strong>Hubungi Konsultan Umrah</strong><small>Pilih sales staff untuk WhatsApp</small></div>
+    <div id="waStaffList" class="v55-wa-list"></div>
+  </div>
+  <button class="v55-wa-toggle" id="waToggle" type="button" aria-label="WhatsApp UmrahKasih" aria-expanded="false"><span class="v55-wa-logo">WA</span><b>WhatsApp</b></button>
+</div>
+
 </main>
 
 <script src="app.js"></script>
