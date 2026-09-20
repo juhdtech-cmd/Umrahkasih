@@ -245,3 +245,18 @@ const UK_CONTACT_CONFIG = {
     location.href=`mailto:${UK_CONTACT_CONFIG.enquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 })();
+
+/* V64 — reliable iOS/Safari testimonial video tap */
+(() => {
+  document.querySelectorAll('.v50-video-card video').forEach((video) => {
+    video.setAttribute('playsinline','');
+    video.setAttribute('webkit-playsinline','');
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        document.querySelectorAll('.v50-video-card video').forEach(v => { if (v !== video && !v.paused) v.pause(); });
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      }
+    });
+  });
+})();
