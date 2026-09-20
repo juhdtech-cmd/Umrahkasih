@@ -730,3 +730,6 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .v50-gallery-grid figcaption{padding-left:10px!important}
   .v50-gallery-grid figcaption small{margin-left:0!important}
 }
+
+/* V52: real testimonial videos */
+.v50-video-card video.v50-video-box{display:block;width:100%;height:auto;aspect-ratio:1/1.18;object-fit:cover;background:#111;border:0;padding:0}
