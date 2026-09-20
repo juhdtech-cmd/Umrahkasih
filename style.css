@@ -419,3 +419,59 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
   .package-card-body p{font-size:14px;}
   .package-arrow{flex-basis:44px;width:44px;height:44px;font-size:32px;}
 }
+
+/* V4.1 — LOCK: outer card size restored; only content inside is compact */
+@media (max-width:767px){
+  /* Keep the original 2 x 2 card footprint */
+  .package-card-grid{
+    width:100%!important;
+    max-width:680px!important;
+    gap:10px!important;
+    margin:22px auto 0!important;
+  }
+  .package-card{
+    border-radius:15px!important;
+    min-width:0;
+  }
+
+  /* Only the graphic inside each card is smaller */
+  .package-visual{
+    width:86%!important;
+    aspect-ratio:1.55/1!important;
+    margin:12px auto 0!important;
+    border-radius:11px!important;
+    overflow:hidden;
+  }
+
+  /* Keep body area, but reduce wording/content */
+  .package-card-body{
+    min-height:88px!important;
+    padding:12px 14px 13px!important;
+    gap:8px!important;
+    align-items:flex-start!important;
+  }
+  .package-card-body h3{
+    font-size:13.5px!important;
+    line-height:1.08!important;
+    margin-bottom:5px!important;
+  }
+  .package-card-body p{
+    font-size:8.5px!important;
+    line-height:1.32!important;
+  }
+  .package-arrow{
+    flex:0 0 27px!important;
+    width:27px!important;
+    height:27px!important;
+    font-size:20px!important;
+    margin-top:1px!important;
+  }
+}
+@media (max-width:390px){
+  .package-card-grid{width:100%!important;gap:8px!important;}
+  .package-visual{width:86%!important;margin-top:10px!important;}
+  .package-card-body{min-height:82px!important;padding:10px 11px 11px!important;}
+  .package-card-body h3{font-size:12.2px!important;}
+  .package-card-body p{font-size:7.8px!important;}
+  .package-arrow{flex-basis:24px!important;width:24px!important;height:24px!important;font-size:18px!important;}
+}
