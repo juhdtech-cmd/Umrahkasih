@@ -198,7 +198,6 @@
 <section id="kata-jemaah" class="v50-section v50-voices">
   <div class="v50-wrap">
     <img class="v50-title-graphic" src="mobile-kepercayaan-amanah.jpg" alt="Kepercayaan Mereka, Amanah Kami">
-    <div class="v50-pills"><button class="active">Semua</button><button>Keluarga</button><button>Warga Emas</button><button>Hotel</button><button>Mutawwif</button></div>
     <div class="v50-review-row">
       <article class="v50-review"><img src="photo-jemaah-1.jpg" alt="Jemaah UmrahKasih"><div class="v50-stars">★★★★★</div><blockquote>“Pengurusan sangat teratur dari mula hingga pulang. Hotel selesa, mutawwif sangat prihatin. InsyaAllah akan bersama lagi.”</blockquote><b>En. Ahmad &amp; Pn. Siti</b><small>UmrahKasih Premium • Nov 2025</small></article>
       <article class="v50-review"><img src="photo-jemaah-2.jpg" alt="Jemaah UmrahKasih"><div class="v50-stars">★★★★★</div><blockquote>“Perjalanan yang sangat bermakna. Mutawwif banyak membantu kami terutama jemaah yang pertama kali menunaikan umrah. Terima kasih UmrahKasih!”</blockquote><b>Puan Zaleha</b><small>UmrahKasih Standard • Feb 2026</small></article>
@@ -211,10 +210,28 @@
   </div>
 </section>
 
+<section id="pertanyaan" class="v55-enquiry">
+  <div class="v55-inner">
+    <div class="v55-kicker">ADA PERTANYAAN?</div>
+    <h2>Kami Sedia Membantu<br>Perjalanan Anda.</h2>
+    <p class="v55-lead">Tinggalkan maklumat ringkas. Pasukan UmrahKasih akan membantu pertanyaan anda.</p>
+    <form id="enquiryForm" class="v55-form">
+      <label>Nama<input name="name" autocomplete="name" required placeholder="Nama penuh"></label>
+      <label>No. Telefon / WhatsApp<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="Contoh: 60123456789"></label>
+      <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="nama@email.com"></label>
+      <label>Saya ingin bertanya tentang
+        <select name="topic" required><option value="">Pilih</option><option>Pakej Umrah</option><option>Tarikh Pelepasan</option><option>Harga & Pembayaran</option><option>Musawwiq</option><option>Tempahan Berkumpulan</option><option>Lain-lain</option></select>
+      </label>
+      <label>Pertanyaan<textarea name="message" rows="4" required placeholder="Tulis pertanyaan anda"></textarea></label>
+      <button class="v55-primary v55-submit" type="submit">Hantar Pertanyaan <span>›</span></button>
+      <div id="enquiryStatus" class="v55-status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
 <section id="gallery" class="v50-section v50-gallery">
   <div class="v50-wrap">
     <img class="v50-title-graphic" src="mobile-detik-indah.jpg" alt="Detik Indah Sepanjang Perjalanan">
-    <div class="v50-pills gallery-pills"><button class="active">Semua</button><button>Makkah</button><button>Madinah</button><button>Ziarah</button><button>Jemaah Kami</button></div>
     <div class="v50-gallery-grid">
       <figure class="tall"><img src="photo-makkah-aerial.jpg" alt="Makkah"><figcaption><b>Makkah</b><small>Kota yang mengubah hati</small></figcaption></figure>
       <figure><img src="photo-nabawi.jpg" alt="Madinah"><figcaption><b>Madinah</b><small>Ketenangan jiwa</small></figcaption></figure>
@@ -236,24 +253,7 @@
   </div>
 </section>
 
-<section id="pertanyaan" class="v55-enquiry">
-  <div class="v55-inner">
-    <div class="v55-kicker">ADA PERTANYAAN?</div>
-    <h2>Kami Sedia Membantu<br>Perjalanan Anda.</h2>
-    <p class="v55-lead">Tinggalkan maklumat ringkas. Pasukan UmrahKasih akan membantu pertanyaan anda.</p>
-    <form id="enquiryForm" class="v55-form">
-      <label>Nama<input name="name" autocomplete="name" required placeholder="Nama penuh"></label>
-      <label>No. WhatsApp<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="Contoh: 60123456789"></label>
-      <label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="nama@email.com"></label>
-      <label>Saya ingin bertanya tentang
-        <select name="topic" required><option value="">Pilih</option><option>Pakej Umrah</option><option>Tarikh Pelepasan</option><option>Harga & Pembayaran</option><option>Musawwiq</option><option>Tempahan Berkumpulan</option><option>Lain-lain</option></select>
-      </label>
-      <label>Pertanyaan<textarea name="message" rows="4" required placeholder="Tulis pertanyaan anda"></textarea></label>
-      <button class="v55-primary v55-submit" type="submit">Hantar Pertanyaan <span>›</span></button>
-      <div id="enquiryStatus" class="v55-status" aria-live="polite"></div>
-    </form>
-  </div>
-</section>
+
 
 <div class="v55-wa" id="waWidget">
   <div class="v55-wa-panel" id="waPanel" aria-hidden="true">
