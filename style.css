@@ -766,3 +766,20 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
 .v62-heart-banner{margin:10px 0 18px;padding:0;overflow:hidden;background:#fbf7ed;}
 .v62-heart-banner img{display:block;width:100%;height:auto;margin:0;}
 @media(max-width:767px){.v62-heart-banner{margin:6px 0 14px;}}
+
+/* V63 — remove stats and use balanced mobile spacing */
+.v50-stats{display:none!important}
+@media (max-width:767px){
+  /* Keep the journey quote, with comfortable breathing room before enquiry. */
+  #kata-jemaah.v50-section{padding-bottom:0!important}
+  #kata-jemaah .v50-quote{margin-top:22px!important;margin-bottom:0!important;padding-bottom:0!important}
+  #pertanyaan.v55-enquiry{padding-top:30px!important;padding-bottom:26px!important}
+
+  /* Preserve the original one-column enquiry form exactly. */
+  #pertanyaan .v55-form{margin-top:25px!important;margin-bottom:0!important}
+  #pertanyaan .v55-status:empty{display:none!important}
+
+  /* Detik Indah sits closer to submit, but not touching it. */
+  #gallery.v50-gallery{padding-top:14px!important;margin-top:0!important}
+  #gallery .v57-title-shade{margin-top:0!important}
+}
