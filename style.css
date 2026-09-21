@@ -840,3 +840,9 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
  .v5412-copy{font-size:8px;line-height:1.4}
  .v5412-legal{font-size:8px;margin-top:6px}
 }
+
+/* V54.14 — floating WhatsApp contact button; existing sections untouched */
+.v5414-whatsapp{position:fixed;right:18px;bottom:20px;z-index:9999;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 7px 22px rgba(0,0,0,.20);text-decoration:none!important;border:2px solid rgba(255,255,255,.95);transition:transform .18s ease,box-shadow .18s ease}
+.v5414-whatsapp:active{transform:scale(.95)}
+.v5414-whatsapp svg{width:29px;height:29px;display:block;fill:#fff}
+@media(min-width:768px){.v5414-whatsapp{right:28px;bottom:28px;width:58px;height:58px}.v5414-whatsapp svg{width:31px;height:31px}}
