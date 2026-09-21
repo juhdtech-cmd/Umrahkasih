@@ -733,3 +733,80 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
 
 /* V52: real testimonial videos */
 .v50-video-card video.v50-video-box{display:block;width:100%;height:auto;aspect-ratio:1/1.18;object-fit:cover;background:#111;border:0;padding:0}
+
+/* V55 — conversion: Musawwiq, enquiry, floating WhatsApp */
+.v55-musawwiq,.v55-enquiry{background:#fbf7ed;padding:62px 20px}.v55-musawwiq{background:linear-gradient(145deg,#075f54,#03483f);color:#fff}.v55-inner{max-width:780px;margin:auto}.v55-kicker{font:700 10px/1.3 Arial,sans-serif;letter-spacing:.22em;color:#cda34d;margin-bottom:12px}.v55-musawwiq h2,.v55-enquiry h2{font:400 42px/1.05 Georgia,serif;margin:0 0 14px}.v55-musawwiq h2 em{font-style:normal;color:#e0bc70}.v55-musawwiq p,.v55-lead{font:400 14px/1.6 Arial,sans-serif;max-width:610px;margin:0 0 24px}.v55-primary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:50px;padding:0 24px;border:0;border-radius:999px;background:#f1dfb9;color:#075b50;text-decoration:none;font:700 13px/1 Arial,sans-serif;cursor:pointer}.v55-enquiry h2{color:#075b50}.v55-lead{color:#68716d}.v55-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}.v55-form label{font:700 11px/1.3 Arial,sans-serif;color:#075b50}.v55-form label:nth-last-of-type(1){grid-column:1/-1}.v55-form input,.v55-form select,.v55-form textarea{display:block;width:100%;box-sizing:border-box;margin-top:7px;border:1px solid #ded4c4;border-radius:12px;background:#fff;padding:13px 14px;color:#2f3935;font:400 14px/1.3 Arial,sans-serif;outline:none}.v55-form textarea{resize:vertical}.v55-submit{grid-column:1/-1;background:#075b50;color:#fff;justify-self:start}.v55-status{grid-column:1/-1;font:600 12px/1.4 Arial,sans-serif;color:#075b50}.v55-wa{position:fixed;right:16px;bottom:18px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.v55-wa-toggle{height:54px;border:0;border-radius:999px;background:#075b50;color:#fff;box-shadow:0 10px 28px #123b3438;display:flex;align-items:center;gap:9px;padding:0 17px 0 7px;font:700 12px Arial,sans-serif}.v55-wa-logo{width:40px;height:40px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font:800 10px Arial,sans-serif}.v55-wa-panel{width:min(310px,calc(100vw - 32px));background:#fff;border:1px solid #e4dacb;border-radius:18px;box-shadow:0 18px 45px #17352f2e;overflow:hidden;transform:translateY(10px);opacity:0;pointer-events:none;transition:.2s ease}.v55-wa.open .v55-wa-panel{transform:none;opacity:1;pointer-events:auto}.v55-wa-head{padding:15px 16px;background:#075b50;color:#fff}.v55-wa-head strong,.v55-wa-head small{display:block}.v55-wa-head strong{font:700 14px Arial}.v55-wa-head small{font:400 10px Arial;margin-top:4px;opacity:.8}.v55-wa-list a,.v55-wa-placeholder{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-top:1px solid #f0e9de;text-decoration:none;color:#075b50}.v55-wa-list a:first-child{border-top:0}.v55-wa-list b{display:block;font:700 13px Arial}.v55-wa-list small{display:block;color:#7d8581;font:400 10px Arial;margin-top:3px}.v55-wa-list i{font-style:normal;font-size:20px;color:#b78b3c}.v55-wa-placeholder{font:600 11px Arial;color:#777}
+@media(max-width:767px){.v55-musawwiq,.v55-enquiry{padding:46px 20px}.v55-musawwiq h2,.v55-enquiry h2{font-size:34px}.v55-form{grid-template-columns:1fr}.v55-form label,.v55-form label:nth-last-of-type(1),.v55-submit,.v55-status{grid-column:1}.v55-primary{width:100%;box-sizing:border-box}.v55-wa-toggle b{display:none}.v55-wa-toggle{width:54px;padding:7px}.v55-wa-logo{width:40px}.v55-wa{right:14px;bottom:16px}}
+
+/* V56 refinements */
+@media(max-width:767px){
+  .v55-enquiry h2{font-size:28px!important;line-height:1.08!important;margin-bottom:12px!important}
+  .v50-experience{padding-bottom:0!important}
+  .v50-voices{padding-top:0!important}
+  .v50-voices .v50-title-graphic{margin-top:0!important}
+  .v50-review-row{padding-top:10px!important}
+  .v50-gallery-grid{padding-top:10px!important}
+}
+\n\n/* V57 — 80% photo shading + tighter enquiry/gallery rhythm */\n@media(max-width:767px){\n  /* Keep the approved title artwork intact; fade only the photographic side. */\n  .v57-title-shade{position:relative;display:block;overflow:hidden;background:#fbf7ed}\n  .v57-title-shade .v50-title-graphic{display:block;width:100%;height:auto;opacity:1!important}\n  .v57-title-shade::after{content:\"\";position:absolute;z-index:2;pointer-events:none;top:0;right:0;bottom:0;width:58%;background:linear-gradient(90deg,rgba(251,247,237,0) 0%,rgba(251,247,237,.80) 30%,rgba(251,247,237,.80) 100%)}\n\n  /* Pull enquiry upward toward the preceding quote/content. */\n  .v55-enquiry{padding-top:24px!important;padding-bottom:30px!important}\n  .v55-enquiry .v55-kicker{margin-top:0!important}\n\n  /* Keep Detik Indah close to the enquiry submit area. */\n  .v55-enquiry + .v50-gallery{padding-top:0!important;margin-top:0!important}\n  .v55-enquiry + .v50-gallery .v57-title-shade{margin-top:0!important}\n}\n
+/* V60 — mobile spacing correction only */
+@media (max-width: 767px) {
+  /* Bring enquiry closer to the preceding journey quote. */
+  #kata-jemaah.v50-section { padding-bottom: 4px !important; }
+  #kata-jemaah .v50-quote { margin-bottom: 0 !important; }
+  #pertanyaan.v55-enquiry { padding-top: 10px !important; padding-bottom: 10px !important; }
+
+  /* Bring Detik Indah closer to the enquiry submit button. */
+  #pertanyaan .v55-form { margin-bottom: 0 !important; }
+  #pertanyaan .v55-status:empty { display: none !important; }
+  #gallery.v50-gallery { padding-top: 0 !important; margin-top: 0 !important; }
+  #gallery .v57-title-shade { margin-top: 0 !important; }
+}
+
+/* V62: approved Umrah Menyentuh Hati graphic above airline section */
+.v62-heart-banner{margin:10px 0 18px;padding:0;overflow:hidden;background:#fbf7ed;}
+.v62-heart-banner img{display:block;width:100%;height:auto;margin:0;}
+@media(max-width:767px){.v62-heart-banner{margin:6px 0 14px;}}
+
+/* V63 — remove stats and use balanced mobile spacing */
+.v50-stats{display:none!important}
+@media (max-width:767px){
+  /* Keep the journey quote, with comfortable breathing room before enquiry. */
+  #kata-jemaah.v50-section{padding-bottom:0!important}
+  #kata-jemaah .v50-quote{margin-top:22px!important;margin-bottom:0!important;padding-bottom:0!important}
+  #pertanyaan.v55-enquiry{padding-top:30px!important;padding-bottom:26px!important}
+
+  /* Preserve the original one-column enquiry form exactly. */
+  #pertanyaan .v55-form{margin-top:25px!important;margin-bottom:0!important}
+  #pertanyaan .v55-status:empty{display:none!important}
+
+  /* Detik Indah sits closer to submit, but not touching it. */
+  #gallery.v50-gallery{padding-top:14px!important;margin-top:0!important}
+  #gallery .v57-title-shade{margin-top:0!important}
+}
+
+/* V65 — compact mobile footer */
+.uk-footer{background:#fbf8f0;color:#0a5f53;border-top:1px solid rgba(194,151,72,.18);padding:34px 16px 28px}
+.uk-footer-inner{max-width:1120px;margin:0 auto}
+.uk-footer-logos{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 auto 30px}
+.uk-footer-logo{display:block;object-fit:contain}
+.uk-logo-umrah{width:132px;height:auto}
+.uk-logo-khadim{width:112px;height:84px}
+.uk-logo-divider{width:1px;height:64px;background:rgba(16,86,76,.28)}
+.uk-footer-nav{display:flex;align-items:center;justify-content:center;white-space:nowrap;gap:9px;margin:0 auto 30px;font-size:10px;letter-spacing:.02em;font-weight:700}
+.uk-footer-nav a{color:#075c51;text-decoration:none}
+.uk-footer-nav span{color:#c59a4d;font-weight:400}
+.uk-footer-addresses{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 auto 26px;max-width:680px}
+.uk-address{display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;padding:0 12px}
+.uk-address+.uk-address{border-left:1px solid rgba(16,86,76,.24);padding-left:20px}
+.uk-pin{width:24px;height:24px;border-radius:50%;background:#e4eee7;display:grid;place-items:center;color:#087061;font-size:8px;margin-top:1px}
+.uk-address strong{display:block;font-size:10px;line-height:1.25;color:#075c51;margin-bottom:4px}
+.uk-address p{margin:0;color:#56636a;font-size:9px;line-height:1.45}
+.uk-socials{display:flex;justify-content:center;gap:14px;margin:0 auto 24px}
+.uk-socials a{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#006557;color:white;text-decoration:none;font:700 15px/1 Arial,sans-serif}
+.uk-footer-bottom{border-top:1px solid rgba(16,86,76,.25);padding-top:18px;text-align:center;color:#5d686d;font-size:9px}
+.uk-footer-bottom p{margin:0 0 12px;line-height:1.45}
+.uk-footer-bottom div{display:flex;justify-content:center;align-items:center;gap:10px;white-space:nowrap}
+.uk-footer-bottom a{color:#5d686d;text-decoration:none}.uk-footer-bottom span{color:#c59a4d}
+@media(min-width:768px){.uk-footer{padding:48px 28px 32px}.uk-logo-umrah{width:180px}.uk-logo-khadim{width:155px;height:110px}.uk-logo-divider{height:82px}.uk-footer-nav{font-size:12px;gap:18px}.uk-address strong{font-size:12px}.uk-address p{font-size:11px}.uk-footer-bottom{font-size:11px}}
+@media(max-width:390px){.uk-footer{padding-left:10px;padding-right:10px}.uk-footer-nav{gap:6px;font-size:8.7px}.uk-address{grid-template-columns:22px 1fr;gap:6px;padding:0 7px}.uk-address+.uk-address{padding-left:12px}.uk-pin{width:20px;height:20px}.uk-address strong{font-size:8.7px}.uk-address p{font-size:8px}.uk-logo-umrah{width:118px}.uk-logo-khadim{width:100px;height:76px}.uk-footer-bottom{font-size:8px}}
+
