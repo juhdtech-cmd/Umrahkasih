@@ -870,3 +870,27 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
     user-select:none!important;
   }
 }
+
+
+/* V68 — true full-surface drag for iPhone/Safari.
+   Horizontal gestures belong to the carousel; vertical gestures remain page scroll. */
+@media (max-width:767px){
+  .v50-video-row,.v50-review-row{
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-y!important;
+    overscroll-behavior-x:contain!important;
+    scroll-snap-type:none!important;
+  }
+  .v50-video-card,.v50-review,
+  .v50-video-card *,.v50-review *{
+    touch-action:pan-y!important;
+  }
+  .v50-video-card video.v50-video-box{
+    pointer-events:none!important;
+  }
+  .v50-video-row.drag-active,.v50-review-row.drag-active{
+    -webkit-overflow-scrolling:auto!important;
+  }
+}

@@ -339,3 +339,69 @@ const UK_CONTACT_CONFIG = {
     }, {passive:true});
   });
 })();
+
+
+/* V68 — Pointer Events drag engine.
+   setPointerCapture keeps the gesture attached to the carousel even when the
+   finger moves across cards, text or the video surface. */
+(() => {
+  document.querySelectorAll('.v50-video-row, .v50-review-row').forEach((row) => {
+    let activeId = null;
+    let startX = 0, startY = 0, startScroll = 0;
+    let axis = null;
+    let didDrag = false;
+
+    const down = (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      activeId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      startScroll = row.scrollLeft;
+      axis = null;
+      didDrag = false;
+      try { row.setPointerCapture(activeId); } catch (_) {}
+    };
+
+    const move = (e) => {
+      if (activeId !== e.pointerId) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (!axis && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+        axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (axis === 'x') row.classList.add('drag-active');
+      }
+      if (axis !== 'x') return;
+      didDrag = true;
+      if (e.cancelable) e.preventDefault();
+      row.scrollLeft = startScroll - dx;
+    };
+
+    const up = (e) => {
+      if (activeId !== e.pointerId) return;
+      try { row.releasePointerCapture(activeId); } catch (_) {}
+      row.classList.remove('drag-active');
+      activeId = null;
+      axis = null;
+      if (didDrag) {
+        row.dataset.justDragged = '1';
+        setTimeout(() => { delete row.dataset.justDragged; }, 160);
+      }
+    };
+
+    row.addEventListener('pointerdown', down, {passive:true});
+    row.addEventListener('pointermove', move, {passive:false});
+    row.addEventListener('pointerup', up, {passive:true});
+    row.addEventListener('pointercancel', up, {passive:true});
+    row.addEventListener('lostpointercapture', () => {
+      row.classList.remove('drag-active');
+      activeId = null; axis = null;
+    });
+
+    row.addEventListener('click', (e) => {
+      if (row.dataset.justDragged === '1') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    }, true);
+  });
+})();
