@@ -260,3 +260,191 @@ const UK_CONTACT_CONFIG = {
     });
   });
 })();
+
+/* V66 — manual horizontal swipe fallback for iOS/Safari rows.
+   Captures horizontal gestures even when they begin on a <video>. */
+(() => {
+  document.querySelectorAll('.v50-video-row, .v50-review-row').forEach((row) => {
+    let startX = 0, startY = 0, startScroll = 0, horizontal = false, moved = false;
+
+    row.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      startScroll = row.scrollLeft;
+      horizontal = false;
+      moved = false;
+      row.classList.add('is-dragging');
+    }, {passive:true, capture:true});
+
+    row.addEventListener('touchmove', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!horizontal && Math.abs(dx) > 7 && Math.abs(dx) > Math.abs(dy) * 1.08) horizontal = true;
+      if (!horizontal) return;
+      moved = true;
+      if (e.cancelable) e.preventDefault();
+      row.scrollLeft = startScroll - dx;
+    }, {passive:false, capture:true});
+
+    const finish = () => {
+      row.classList.remove('is-dragging');
+      setTimeout(() => { moved = false; }, 80);
+    };
+    row.addEventListener('touchend', finish, {passive:true, capture:true});
+    row.addEventListener('touchcancel', finish, {passive:true, capture:true});
+
+    // Prevent an accidental video play after a real swipe, but keep normal taps working.
+    row.addEventListener('click', (e) => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  });
+})();
+
+/* V67 — tap anywhere on a video card to play/pause while preserving full-card swipe. */
+(() => {
+  document.querySelectorAll('.v50-video-card').forEach((card) => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    let x0 = 0, y0 = 0, dragged = false;
+
+    card.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+      dragged = false;
+    }, {passive:true});
+
+    card.addEventListener('touchmove', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - x0;
+      const dy = e.touches[0].clientY - y0;
+      if (Math.hypot(dx, dy) > 8) dragged = true;
+    }, {passive:true});
+
+    card.addEventListener('touchend', () => {
+      if (dragged) return;
+      document.querySelectorAll('.v50-video-card video').forEach(v => {
+        if (v !== video && !v.paused) v.pause();
+      });
+      if (video.paused) {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, {passive:true});
+  });
+})();
+
+
+/* V68 — Pointer Events drag engine.
+   setPointerCapture keeps the gesture attached to the carousel even when the
+   finger moves across cards, text or the video surface. */
+(() => {
+  document.querySelectorAll('.v50-video-row, .v50-review-row').forEach((row) => {
+    let activeId = null;
+    let startX = 0, startY = 0, startScroll = 0;
+    let axis = null;
+    let didDrag = false;
+
+    const down = (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      activeId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      startScroll = row.scrollLeft;
+      axis = null;
+      didDrag = false;
+      try { row.setPointerCapture(activeId); } catch (_) {}
+    };
+
+    const move = (e) => {
+      if (activeId !== e.pointerId) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (!axis && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+        axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (axis === 'x') row.classList.add('drag-active');
+      }
+      if (axis !== 'x') return;
+      didDrag = true;
+      if (e.cancelable) e.preventDefault();
+      row.scrollLeft = startScroll - dx;
+    };
+
+    const up = (e) => {
+      if (activeId !== e.pointerId) return;
+      try { row.releasePointerCapture(activeId); } catch (_) {}
+      row.classList.remove('drag-active');
+      activeId = null;
+      axis = null;
+      if (didDrag) {
+        row.dataset.justDragged = '1';
+        setTimeout(() => { delete row.dataset.justDragged; }, 160);
+      }
+    };
+
+    row.addEventListener('pointerdown', down, {passive:true});
+    row.addEventListener('pointermove', move, {passive:false});
+    row.addEventListener('pointerup', up, {passive:true});
+    row.addEventListener('pointercancel', up, {passive:true});
+    row.addEventListener('lostpointercapture', () => {
+      row.classList.remove('drag-active');
+      activeId = null; axis = null;
+    });
+
+    row.addEventListener('click', (e) => {
+      if (row.dataset.justDragged === '1') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    }, true);
+  });
+})();
+
+/* V70 — arrow controls. Does not depend on touch/swipe. */
+(() => {
+  const configs = [
+    ['.v50-video-row', '.v50-video-card'],
+    ['.v50-review-row', '.v50-review']
+  ];
+
+  configs.forEach(([rowSelector, cardSelector]) => {
+    document.querySelectorAll(rowSelector).forEach((row) => {
+      if (row.closest('.v70-carousel-shell')) return;
+      const shell = document.createElement('div');
+      shell.className = 'v70-carousel-shell';
+      row.parentNode.insertBefore(shell, row);
+      shell.appendChild(row);
+
+      const prev = document.createElement('button');
+      prev.type = 'button'; prev.className = 'v70-carousel-arrow prev';
+      prev.setAttribute('aria-label', 'Sebelumnya'); prev.innerHTML = '‹';
+      const next = document.createElement('button');
+      next.type = 'button'; next.className = 'v70-carousel-arrow next';
+      next.setAttribute('aria-label', 'Seterusnya'); next.innerHTML = '›';
+      shell.append(prev, next);
+
+      const step = () => {
+        const card = row.querySelector(cardSelector);
+        if (!card) return Math.max(220, row.clientWidth * .75);
+        const gap = parseFloat(getComputedStyle(row).gap || '0') || 0;
+        return card.getBoundingClientRect().width + gap;
+      };
+      const update = () => {
+        const max = Math.max(0, row.scrollWidth - row.clientWidth - 2);
+        prev.disabled = row.scrollLeft <= 2;
+        next.disabled = row.scrollLeft >= max;
+      };
+      prev.addEventListener('click', () => row.scrollBy({left:-step(), behavior:'smooth'}));
+      next.addEventListener('click', () => row.scrollBy({left: step(), behavior:'smooth'}));
+      row.addEventListener('scroll', update, {passive:true});
+      window.addEventListener('resize', update, {passive:true});
+      requestAnimationFrame(update);
+    });
+  });
+})();

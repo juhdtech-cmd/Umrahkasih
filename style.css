@@ -894,31 +894,10 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
     -webkit-overflow-scrolling:auto!important;
   }
 }
-\n\n/* V69 — iOS native carousel fix.
-   Do not intercept horizontal finger movement with JS. Safari owns the native
-   overflow scroll, while media descendants cannot steal the gesture. */
-@media (max-width:767px){
-  .v50-video-row,.v50-review-row{
-    display:flex!important;
-    overflow-x:scroll!important;
-    overflow-y:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
-    touch-action:auto!important;
-    scroll-snap-type:none!important;
-    overscroll-behavior-x:contain!important;
-  }
-  .v50-video-card,.v50-review{
-    flex-shrink:0!important;
-    touch-action:auto!important;
-    -webkit-user-select:none!important;
-    user-select:none!important;
-  }
-  .v50-video-card video.v50-video-box,
-  .v50-review img{
-    pointer-events:none!important;
-    touch-action:none!important;
-    -webkit-user-select:none!important;
-    user-select:none!important;
-    -webkit-user-drag:none!important;
-  }
-}
+
+/* V70 — stable arrow navigation for video & testimonial carousels */
+.v70-carousel-shell{position:relative}
+.v70-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:25;width:38px;height:38px;border-radius:50%;border:1.5px solid #c99a3b;background:rgba(255,252,245,.96);color:#075f53;display:grid;place-items:center;font:400 30px/1 Arial,sans-serif;box-shadow:0 4px 14px rgba(51,43,27,.16);cursor:pointer;padding:0}
+.v70-carousel-arrow.prev{left:5px}.v70-carousel-arrow.next{right:5px}
+.v70-carousel-arrow:disabled{opacity:.28;cursor:default}
+@media(max-width:767px){.v70-carousel-arrow{width:36px;height:36px;font-size:27px}.v70-carousel-arrow.prev{left:4px}.v70-carousel-arrow.next{right:4px}}
