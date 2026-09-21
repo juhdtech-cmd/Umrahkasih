@@ -769,7 +769,7 @@ body{margin:0;background:var(--ivory);color:var(--green);font-family:Arial,Helve
 @media(min-width:768px){.v549-musawwiq{padding:20px 24px 40px}.v549-musawwiq-inner{max-width:760px;margin:auto;padding:30px}.v549-musawwiq h3{font-size:32px}}
 
 /* V54.10 — aligned Khadim Ummah + UmrahKasih brand footer after Musawwiq */
-.v5410-brand-footer{background:#fbf7ed;padding:0 18px 26px}
+.v5410-brand-footer{background:#ffffff;padding:0 18px 26px}
 .v5410-gold-line{height:2px;width:100%;max-width:760px;margin:0 auto 18px;background:#c59a43;border-radius:2px}
 .v5410-brand-row{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px}
 .v5410-brand{height:76px;display:flex;align-items:center;justify-content:center;overflow:hidden}
