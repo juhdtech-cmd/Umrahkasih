@@ -1,5 +1,5 @@
 window.UMRAH_VISUALS = {
-  eko:{square:'product-eko-square.jpg',banner:'product-eko-banner.jpg',label:'Umrah Kasih Eko'},
+  eko:{square:'product-eko-square.jpg',home:'product-eko-home-mobile.png',result:'product-eko-result-mobile.png',banner:'product-eko-banner.jpg',label:'Umrah Kasih Eko'},
   standard:{square:'product-standard-square.jpg',banner:'product-standard-banner.jpg',label:'Umrah Kasih Standard'},
   premium:{square:'product-premium-square.jpg',banner:'product-premium-banner.jpg',label:'Umrah Kasih Premium'},
   private:{square:'product-private-square.jpg',banner:'product-private-banner.jpg',label:'Umrah Kasih Private'}
