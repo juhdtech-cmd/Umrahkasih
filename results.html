@@ -1,6 +1,6 @@
 <!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hasil Carian Pakej | UmrahKasih</title><link rel="stylesheet" href="product.css"></head><body>
 <header class="top"><a href="index.html"><img src="logo-primary.png" alt="UmrahKasih"></a><a href="index.html#finder">Ubah Carian</a></header>
-<main class="wrap"><section class="results-head"><div class="eyebrow">PILIHAN MENUJU BAITULLAH</div><h1>Pakej Yang Sesuai</h1><p id="count"></p><p class="series-note">Visual menunjukkan siri pakej. Harga, tarikh, hotel dan penerbangan dibaca daripada data produk sebenar.</p></section><section id="grid" class="grid"></section></main>
+<main class="wrap"><section class="results-head"><div class="eyebrow">PILIHAN MENUJU BAITULLAH</div><h1>Pilihan Pakej Anda</h1><p id="count"></p></section><section id="grid" class="grid"></section></main>
 <script src="product-data.js"></script><script>
 const q=new URLSearchParams(location.search);
 const series=q.get('series');
@@ -48,7 +48,7 @@ let items=UMRAH_PRODUCTS
   .filter(x=>series || (!season&&!month&&!period) || x.matched.length>0);
 
 const grid=document.getElementById('grid');
-document.getElementById('count').textContent=items.length+' pakej ditemui';
+document.getElementById('count').textContent='Senarai '+items.length+' pakej tersedia';
 if(!items.length){
   grid.innerHTML='<div class="empty">Tiada pakej yang sepadan dengan pilihan ini. Tekan “Ubah Carian” untuk cuba pilihan lain.</div>';
 }else{
