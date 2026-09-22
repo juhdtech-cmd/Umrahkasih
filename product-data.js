@@ -92,7 +92,7 @@ window.UMRAH_PRODUCTS = [
     season:'Waktu Kemuncak · Musim Sejuk',
     seasonCode:'peak',
     duration:'12 Hari 10 Malam',
-    from:10980,
+    from:13480,
     tagline:'Penginapan lebih dekat, perjalanan lebih selesa. Ibadah dengan tenang dan menelusuri Sirah Rasulullah.',
     closingTagline:'Lebih dekat. Lebih selesa. Lebih terjaga.',
     closingText:'Direka khusus untuk jemaah yang mengutamakan keselesaan penginapan, kemudahan perjalanan serta pengalaman Umrah yang lebih tersusun sepanjang musim kemuncak.',
@@ -107,7 +107,7 @@ window.UMRAH_PRODUCTS = [
       {label:'13 – 24 Januari 2027', months:['Jan'], tags:['peak','winter']},
       {label:'24 Januari – 4 Februari 2027', months:['Jan','Feb'], tags:['peak','winter']}
     ],
-    rooms:[['Berempat Sebilik',10980],['Bertiga Sebilik',11980],['Berdua Sebilik',13780]],
+    rooms:[['Berempat Sebilik',13480],['Bertiga Sebilik',14580],['Berdua Sebilik',16980]],
     experiences:[
       {title:'Ziarah Istimewa — Jabal Nur & Gua Hira’',text:'Menelusuri lokasi penuh sejarah yang berkait rapat dengan permulaan risalah Nabi Muhammad SAW.'},
       {title:'Ziarah Rare',text:'Pengalaman ziarah terpilih yang memberi nilai tambahan kepada perjalanan Umrah anda termasuk Ziarah Gua Maharith, tempat dimana Baginda Nabi Rasulullah dibawa Sahabat ketika Baginda Nabi Rasulullah cedera di Peperangan Uhud.'}
