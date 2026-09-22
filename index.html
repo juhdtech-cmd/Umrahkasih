@@ -163,20 +163,20 @@
        Empat pilihan pakej untuk pengalaman umrah yang sesuai dengan keperluan anda.
     </p>
     <div class="cards package-card-grid">
-      <a class="package-card" href="#" aria-label="Umrah Kasih Ekonomi">
-        <div class="package-visual"><img src="package-ekonomi.jpg" alt="Umrah Kasih Ekonomi — 9 hari 7 malam, bermula RM5,980"></div>
+      <a class="package-card" href="results.html?series=eko" aria-label="Umrah Kasih Ekonomi">
+        <div class="package-visual"><img src="product-eko-square.jpg" alt="Umrah Kasih Ekonomi — 9 hari 7 malam, bermula RM5,980"></div>
         <div class="package-card-body"><div><h3>Umrah Kasih Ekonomi</h3><p>Pilihan jimat, tetap selesa.</p></div><span class="package-arrow">›</span></div>
       </a>
-      <a class="package-card" href="#" aria-label="Umrah Kasih Standard">
-        <div class="package-visual"><img src="package-standard.jpg" alt="Umrah Kasih Standard — 11 hari 9 malam, bermula RM6,480"></div>
+      <a class="package-card" href="results.html?series=standard" aria-label="Umrah Kasih Standard">
+        <div class="package-visual"><img src="product-standard-square.jpg" alt="Umrah Kasih Standard — 11 hari 9 malam, bermula RM6,480"></div>
         <div class="package-card-body"><div><h3>Umrah Kasih Standard</h3><p>Pilihan seimbang, lebih selesa.</p></div><span class="package-arrow">›</span></div>
       </a>
-      <a class="package-card" href="#" aria-label="Umrah Kasih Premium">
-        <div class="package-visual premium"><img src="package-premium.jpg" alt="Umrah Kasih Premium — 12 hari 10 malam, bermula RM9,330"></div>
+      <a class="package-card" href="results.html?series=premium" aria-label="Umrah Kasih Premium">
+        <div class="package-visual premium"><img src="product-premium-square.jpg" alt="Umrah Kasih Premium — 12 hari 10 malam, bermula RM9,330"></div>
         <div class="package-card-body"><div><h3>Umrah Kasih Premium</h3><p>Bermula RM9,330 • 12 hari 10 malam</p></div><span class="package-arrow">›</span></div>
       </a>
-      <a class="package-card" href="#" aria-label="Umrah Kasih Private">
-        <div class="package-visual private"><img src="package-private.jpg" alt="Umrah Kasih Private — Pakej Privasi Khas"></div>
+      <a class="package-card" href="results.html?series=private" aria-label="Umrah Kasih Private">
+        <div class="package-visual private"><img src="product-private-square.jpg" alt="Umrah Kasih Private — Pakej Privasi Khas"></div>
         <div class="package-card-body"><div><h3>Umrah Kasih Private</h3><p>Pakej Privasi Khas</p></div><span class="package-arrow">›</span></div>
       </a>
     </div>
@@ -309,5 +309,8 @@
 (()=>{const open=document.getElementById('waOpen'),panel=document.getElementById('waPanel'),back=document.getElementById('waBackdrop'),close=document.getElementById('waClose');function show(){back.hidden=false;panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');open.setAttribute('aria-expanded','true')}function hide(){panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');open.setAttribute('aria-expanded','false');setTimeout(()=>back.hidden=true,180)}open.addEventListener('click',show);close.addEventListener('click',hide);back.addEventListener('click',hide);document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()})})();
 </script>
 
+<script>
+(()=>{const b=document.getElementById('finderSearch');if(b)b.addEventListener('click',()=>{window.location.href='results.html';});})();
+</script>
 </body>
 </html>
