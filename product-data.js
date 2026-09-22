@@ -160,14 +160,8 @@ window.UMRAH_PRODUCTS = [
     closingText:'Direka khusus untuk jemaah yang mengutamakan keselesaan ketika ibadah Bulan Ramadhan di Tanah Suci, kemudahan perjalanan serta pengalaman Ibadah yang tersusun dengan bimbingan setiap masa oleh Mutawwif berpengalaman.',
     description:'Nikmati Pakej Umrah Kasih Ramadan 12 Hari 10 Malam Khas untuk anda yang ingin merebut ganjaran pahala Ramadan di bumi Makkah, penekanan kepada keselesaan, pengurusan yang teratur serta pengisian rohani yang lebih eksklusif.',
     departures:[
-      {label:'5 – 16 November 2026', months:['Nov'], tags:['ramadhan']},
-      {label:'15 – 26 November 2026', months:['Nov'], tags:['ramadhan']},
-      {label:'25 November – 6 Disember 2026', months:['Nov','Dis'], tags:['ramadhan']},
-      {label:'10 – 21 Disember 2026', months:['Dis'], tags:['ramadhan']},
-      {label:'21 Disember 2026 – 1 Januari 2027', months:['Dis','Jan'], tags:['ramadhan']},
-      {label:'1 – 12 Januari 2027', months:['Jan'], tags:['ramadhan']},
-      {label:'13 – 24 Januari 2027', months:['Jan'], tags:['ramadhan']},
-      {label:'24 Januari – 4 Februari 2027', months:['Jan','Feb'], tags:['ramadhan']}
+      {label:'5 Febuari – 15 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Awal Ramadhan']},
+      {label:'15 Febuari – 25 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Pertengahan Ramadhan']}
     ],
     rooms:[
       ['Berempat Sebilik',14380],
