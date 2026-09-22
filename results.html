@@ -2,6 +2,52 @@
 <header class="top"><a href="index.html"><img src="logo-primary.png" alt="UmrahKasih"></a><a href="index.html#finder">Ubah Carian</a></header>
 <main class="wrap"><section class="results-head"><div class="eyebrow">PILIHAN MENUJU BAITULLAH</div><h1>Pakej Yang Sesuai</h1><p id="count"></p><p class="series-note">Visual menunjukkan siri pakej. Harga, tarikh, hotel dan penerbangan dibaca daripada data produk sebenar.</p></section><section id="grid" class="grid"></section></main>
 <script src="product-data.js"></script><script>
-const q=new URLSearchParams(location.search),series=q.get('series');let items=UMRAH_PRODUCTS.filter(p=>!series||p.series===series);const grid=document.getElementById('grid');document.getElementById('count').textContent=items.length+' pakej ditemui';
-if(!items.length){grid.innerHTML='<div class="empty">Maklumat produk untuk siri ini belum dimasukkan. Visual siri sudah tersedia dan data produk akan dipaparkan secara automatik apabila ditambah.</div>'}else items.forEach(p=>{const v=UMRAH_VISUALS[p.series],a=document.createElement('a');a.className='card';a.href='product.html?id='+encodeURIComponent(p.id);a.innerHTML=`<img src="${v.result||v.square}" alt="${v.label}"><div class="card-body"><div class="eyebrow">${p.season} · ${p.duration}</div><h2>${p.name}</h2><div class="from">Bermula <b>RM${p.from.toLocaleString()}</b></div><div class="info">Hotel Makkah: ${p.hotels[0][1]}<br>Hotel Madinah: ${p.hotels[1][1]}<br>Penerbangan: ${p.flight.split('·')[1]||p.flight}<br>${p.dates.join(' · ')}</div><span class="more">Maklumat Penuh ›</span></div>`;grid.appendChild(a)});
+const q=new URLSearchParams(location.search);
+const series=q.get('series');
+let finder={};
+try{finder=JSON.parse(localStorage.getItem('umrahkasih-finder')||'{}')||{}}catch(e){finder={}}
+
+// Direct query values are useful for testing/sharing. A series link from the homepage
+// intentionally ignores any old finder state.
+const useFinder=!series;
+const season=q.get('season') || (useFinder?finder.season:null);
+const month=q.get('month') || (useFinder?finder.month:null);
+const period=q.get('period') || (useFinder?finder.period:null);
+const budgetMin=Number(q.get('min') || (useFinder?finder.budgetMin:0) || 0);
+const budgetMax=Number(q.get('max') || (useFinder?finder.budgetMax:999999) || 999999);
+
+function departuresOf(p){
+  if(Array.isArray(p.departures)) return p.departures;
+  return (p.dates||[]).map(label=>({label,months:[],tags:[p.seasonCode].filter(Boolean)}));
+}
+function matchingDepartures(p){
+  let ds=departuresOf(p);
+  if(season) ds=ds.filter(d=>(d.tags||[]).includes(season));
+  if(month) ds=ds.filter(d=>(d.months||[]).includes(month));
+  if(period && period!=='Syawal 2027') ds=ds.filter(d=>(d.periods||[]).includes(period));
+  if(period==='Syawal 2027') ds=ds.filter(d=>(d.tags||[]).includes('syawal'));
+  return ds;
+}
+
+let items=UMRAH_PRODUCTS
+  .filter(p=>!series||p.series===series)
+  .filter(p=>p.from>=budgetMin && p.from<=budgetMax)
+  .map(p=>({p,matched:matchingDepartures(p)}))
+  .filter(x=>series || (!season&&!month&&!period) || x.matched.length>0);
+
+const grid=document.getElementById('grid');
+document.getElementById('count').textContent=items.length+' pakej ditemui';
+if(!items.length){
+  grid.innerHTML='<div class="empty">Tiada pakej yang sepadan dengan pilihan ini. Tekan “Ubah Carian” untuk cuba pilihan lain.</div>';
+}else{
+  items.forEach(({p,matched})=>{
+    const v=UMRAH_VISUALS[p.series];
+    const shownDates=(series||(!season&&!month&&!period)?departuresOf(p):matched).map(d=>d.label);
+    const a=document.createElement('a');
+    a.className='card';
+    a.href='product.html?id='+encodeURIComponent(p.id)+(season?'&season='+encodeURIComponent(season):'');
+    a.innerHTML=`<img src="${v.result||v.square}" alt="${v.label}"><div class="card-body"><div class="eyebrow">${p.season} · ${p.duration}</div><h2>${p.name}</h2><div class="from">Bermula <b>RM${p.from.toLocaleString()}</b></div><div class="info">Hotel Makkah: ${p.hotels[0][1]}<br>Hotel Madinah: ${p.hotels[1][1]}<br>Penerbangan: ${(p.flight.split('·')[1]||p.flight).trim()}<br>${shownDates.join(' · ')}</div><span class="more">Maklumat Penuh ›</span></div>`;
+    grid.appendChild(a);
+  });
+}
 </script></body></html>
