@@ -48,7 +48,7 @@ let items=UMRAH_PRODUCTS
   .filter(x=>series || (!season&&!month&&!period) || x.matched.length>0);
 
 const grid=document.getElementById('grid');
-document.getElementById('count').textContent='Senarai '+items.length+' pakej tersedia';
+document.getElementById('count').textContent=items.length+' kategori pakej tersedia';
 if(!items.length){
   grid.innerHTML='<div class="empty">Tiada pakej yang sepadan dengan pilihan ini. Tekan “Ubah Carian” untuk cuba pilihan lain.</div>';
 }else{
