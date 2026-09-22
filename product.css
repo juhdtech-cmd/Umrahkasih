@@ -18,3 +18,8 @@
   .results-head h1{font-size:22px;line-height:1.08;margin:6px 0 8px}
   .results-head #count{font-size:13.5px;margin:0}
 }
+
+
+/* V54.26 — Premium product detail components */
+.room small{display:block;margin-top:3px;color:#73817c;font-size:11px;font-weight:400}.experiences{display:grid;grid-template-columns:1fr 1fr;gap:12px}.experience{background:var(--cream);border-radius:14px;padding:16px}.experience h3{font-family:Georgia,serif;color:var(--green);font-size:18px;margin:0 0 7px}.experience p{font-size:13px;line-height:1.55;color:#596963;margin:0}.bonus{margin-top:12px;border:1px solid #e7dcc4;border-radius:14px;padding:14px 16px;background:#fffaf0}.bonus strong{display:block;margin-top:5px;color:var(--ink)}.sublist{margin:7px 0 2px;padding-left:18px}.sublist li{margin:2px 0}.product-closing{margin:8px 0 96px;padding:22px;border-radius:18px;background:var(--cream);text-align:center}.product-closing h2{font-family:Georgia,serif;color:var(--green);font-size:26px;margin:7px 0}.product-closing p{max-width:760px;margin:0 auto;color:#596963;line-height:1.6;font-size:13px}
+@media(max-width:700px){.experiences{grid-template-columns:1fr}.experience{padding:14px}.experience h3{font-size:17px}.bonus{padding:12px 14px}.product-closing{padding:18px 15px;margin-bottom:88px}.product-closing h2{font-size:22px}.hotels{gap:9px}}

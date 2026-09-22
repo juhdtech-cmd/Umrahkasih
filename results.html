@@ -29,7 +29,9 @@ function matchingDepartures(p){
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function cleanHotelName(v){return String(v||'').replace(/\s*@\s*setaraf/ig,'').trim()}
 function cleanFlight(v){
-  const parts=String(v||'').split('·');
+  const raw=String(v||'').trim();
+  if(!raw.includes('·')) return {type:'',carriers:raw.replace(/\s*\|\s*/g,' / ')};
+  const parts=raw.split('·');
   const type=(parts.shift()||'').trim();
   const carriers=parts.join('·').trim().replace(/\s*\|\s*/g,' / ');
   return {type,carriers:carriers||type};
