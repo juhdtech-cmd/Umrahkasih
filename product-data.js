@@ -146,6 +146,84 @@ window.UMRAH_PRODUCTS = [
       {text:'Serahkan soft copy melalui WhatsApp atau e-mel dalam tempoh 7 hari selepas pendaftaran, atau selewat-lewatnya 60 hari sebelum tarikh penerbangan.',subitems:['Passport','Gambar']},
       'Simpan invois dan resit pembayaran untuk rujukan.'
     ]
+  },
+  {
+    id:'premium-ramadhan-12h10m-2026-27',
+    series:'premium',
+    name:'UMRAH KASIH PREMIUM RAMADHAN',
+    season:'Bulan Ramadhan',
+    seasonCode:'ramadhan',
+    duration:'12 Hari 10 Malam',
+    from:10980,
+    tagline:'Ibadah Ramadhan dengan selesa dan dibimbing seriap masa.',
+    closingTagline:'Ibadah Ramadhan dengan selesa dan dibimbing seriap masa.',
+    closingText:'Direka khusus untuk jemaah yang mengutamakan keselesaan ketika ibadah Bulan Ramadhan di Tanah Suci, kemudahan perjalanan serta pengalaman Ibadah yang tersusun dengan bimbingan setiap masa oleh Mutawwif berpengalaman.',
+    description:'Nikmati Pakej Umrah Kasih Ramadan 12 Hari 10 Malam Khas untuk anda yang ingin merebut ganjaran pahala Ramadan di bumi Makkah, penekanan kepada keselesaan, pengurusan yang teratur serta pengisian rohani yang lebih eksklusif.',
+    departures:[
+      {label:'5 – 16 November 2026', months:['Nov'], tags:['ramadhan']},
+      {label:'15 – 26 November 2026', months:['Nov'], tags:['ramadhan']},
+      {label:'25 November – 6 Disember 2026', months:['Nov','Dis'], tags:['ramadhan']},
+      {label:'10 – 21 Disember 2026', months:['Dis'], tags:['ramadhan']},
+      {label:'21 Disember 2026 – 1 Januari 2027', months:['Dis','Jan'], tags:['ramadhan']},
+      {label:'1 – 12 Januari 2027', months:['Jan'], tags:['ramadhan']},
+      {label:'13 – 24 Januari 2027', months:['Jan'], tags:['ramadhan']},
+      {label:'24 Januari – 4 Februari 2027', months:['Jan','Feb'], tags:['ramadhan']}
+    ],
+    rooms:[
+      ['Berempat Sebilik',10980],
+      ['Bertiga Sebilik',11980],
+      ['Berdua Sebilik',13780]
+    ],
+    experiences:[
+      {title:'Bimbingan Munajat',text:'Seriap hari diisi dengan ibadah di Masjidil Haram, setiap malam dihiasi dengan tarawih dan munajat.'},
+      {title:'Ziarah Istimewa — Jabal Nur & Gua Hira’',text:'Menelusuri lokasi penuh sejarah yang berkait rapat dengan permulaan risalah Nabi Muhammad SAW.'},
+      {title:'Ziarah Rare',text:'Pengalaman ziarah terpilih yang memberi nilai tambahan kepada perjalanan Umrah anda termasuk Ziarah Gua Maharith, tempat dimana Baginda Nabi Rasulullah dibawa Sahabat ketika Baginda Nabi Rasulullah cedera di Peperangan Uhud.'}
+    ],
+    bonus:'Jamuan makan malam istimewa di Kebun Kurma.',
+    hotels:[
+      ['Makkah','Pullman ZamZam Makkah @ setaraf','Anggaran jarak: 50 meter · 6 malam · Sahur'],
+      ['Madinah','Safwat Madinah @ setaraf','Anggaran jarak: 100 meter · 4 malam · Sahur & Iftar']
+    ],
+    flight:'Malaysia Airlines | Saudia Airlines',
+    flightDetails:[
+      {name:'Malaysia Airlines',logo:'airline-malaysia.jpg',class:'Kelas Ekonomi',baggage:'Berat Bagasi 30Kg'},
+      {name:'Saudia Airlines',logo:'airline-saudia.png',class:'Kelas Ekonomi',baggage:'Berat Bagasi 46Kg'}
+    ],
+    children:[
+      'Kanak-kanak 12 tahun ke bawah: Diskaun RM300 daripada harga pakej dewasa.',
+      'Kanak-kanak 5 tahun ke bawah tanpa katil: RM6,500 sahaja.',
+      'Bayi bawah 2 tahun: RM3,000 sahaja.'
+    ],
+    included:[
+      'Tiket penerbangan kelas Ekonomi — Saudia Airlines @ Malaysia Airlines',
+      'Penginapan hotel jarak dekat seperti yang dinyatakan',
+      'Visa Pelancong / Visa Umrah',
+      'Pengangkutan bas Premium berhawa dingin',
+      'Perkhidmatan Mutawwif berpengalaman bagi Umrah dan ziarah, mengiringi jemaah dari Malaysia',
+      'Pengiring berpengalaman bermula dari Malaysia',
+      'Perkhidmatan Ground Handling di Makkah dan Madinah',
+      {text:'Set Bagasi Khadim Ummah Holidays',subitems:['Bagasi 24”','Bagasi 20”','Sling Bag','Beg Kasut','Buku Umrah']},
+      'Perlindungan Insurans Kelompok Takaful Malaysia',
+      'Takaful Perubatan Pesakit Luar Premium Al-Khairi Care',
+      'Kursus Umrah'
+    ],
+    excluded:[
+      'Takaful Perjalanan Etiqa 360',
+      'Lebihan berat bagasi',
+      'Perkhidmatan Room Service',
+      'Visa On Arrival sekiranya permohonan visa atas talian ditolak',
+      'Kos perubatan dan pengurusan kematian'
+    ],
+    registration:[
+      'Pilih jenis bilik dan tarikh penerbangan pakej Umrah anda.',
+      'Tekan butang SAYA BERMINAT di bawah.',
+      'Buat pembayaran deposit RM1,000 / seorang.',
+      {text:'Khadim Ummah Holidays Sdn Bhd',subitems:['Maybank','5521 8956 5759']},
+      'Bayaran penuh hendaklah diselesaikan 60 hari sebelum tarikh penerbangan.',
+      {text:'Serahkan soft copy melalui WhatsApp atau e-mel dalam tempoh 7 hari selepas pendaftaran, atau selewat-lewatnya 60 hari sebelum tarikh penerbangan.',subitems:['Passport','Gambar']},
+      'Simpan invois dan resit pembayaran untuk rujukan.'
+    ]
   }
+
 
 ];
