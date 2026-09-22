@@ -7,8 +7,6 @@ const series=q.get('series');
 let finder={};
 try{finder=JSON.parse(localStorage.getItem('umrahkasih-finder')||'{}')||{}}catch(e){finder={}}
 
-// Direct query values are useful for testing/sharing. A series link from the homepage
-// intentionally ignores any old finder state.
 const useFinder=!series;
 const season=q.get('season') || (useFinder?finder.season:null);
 const month=q.get('month') || (useFinder?finder.month:null);
@@ -28,6 +26,20 @@ function matchingDepartures(p){
   if(period==='Syawal 2027') ds=ds.filter(d=>(d.tags||[]).includes('syawal'));
   return ds;
 }
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function cleanHotelName(v){return String(v||'').replace(/\s*@\s*setaraf/ig,'').trim()}
+function cleanFlight(v){
+  const parts=String(v||'').split('·');
+  const type=(parts.shift()||'').trim();
+  const carriers=parts.join('·').trim().replace(/\s*\|\s*/g,' / ');
+  return {type,carriers:carriers||type};
+}
+function shortDateLabel(label){
+  return String(label||'')
+    .replace(/Oktober/g,'Okt')
+    .replace(/November/g,'Nov')
+    .replace(/Disember/g,'Dis');
+}
 
 let items=UMRAH_PRODUCTS
   .filter(p=>!series||p.series===series)
@@ -42,11 +54,40 @@ if(!items.length){
 }else{
   items.forEach(({p,matched})=>{
     const v=UMRAH_VISUALS[p.series];
-    const shownDates=(series||(!season&&!month&&!period)?departuresOf(p):matched).map(d=>d.label);
+    const shownDates=(series||(!season&&!month&&!period)?departuresOf(p):matched);
+    const hotels=(p.hotels||[]).map(h=>({city:h[0],name:cleanHotelName(h[1]),nights:h[2]||''}));
+    const hasSetaraf=(p.hotels||[]).some(h=>/@\s*setaraf/i.test(h[1]||''));
+    const flight=cleanFlight(p.flight);
     const a=document.createElement('a');
     a.className='card';
     a.href='product.html?id='+encodeURIComponent(p.id)+(season?'&season='+encodeURIComponent(season):'');
-    a.innerHTML=`<img src="${v.result||v.square}" alt="${v.label}"><div class="card-body"><div class="eyebrow">${p.season} · ${p.duration}</div><h2>${p.name}</h2><div class="from">Bermula <b>RM${p.from.toLocaleString()}</b></div><div class="info">Hotel Makkah: ${p.hotels[0][1]}<br>Hotel Madinah: ${p.hotels[1][1]}<br>Penerbangan: ${(p.flight.split('·')[1]||p.flight).trim()}<br>${shownDates.join(' · ')}</div><span class="more">Maklumat Penuh ›</span></div>`;
+    a.innerHTML=`
+      <img src="${esc(v.result||v.square)}" alt="${esc(v.label)}">
+      <div class="card-body">
+        <div class="eyebrow">${esc(p.season)} · ${esc(p.duration)}</div>
+        <h2>${esc(p.name)}</h2>
+        <div class="from">Bermula <b>RM${Number(p.from).toLocaleString()}</b></div>
+
+        <div class="result-details">
+          <div class="detail-group">
+            <div class="detail-title">PENGINAPAN</div>
+            ${hotels.map(h=>`<div class="detail-line"><strong>${esc(h.city)}</strong><span>${esc(h.name)}${h.nights?` · ${esc(String(h.nights).toLowerCase())}`:''}</span></div>`).join('')}
+            ${hasSetaraf?'<div class="detail-note">Hotel atau setaraf</div>':''}
+          </div>
+
+          <div class="detail-group">
+            <div class="detail-title">PENERBANGAN</div>
+            <div class="detail-flight">${flight.type?`<strong>${esc(flight.type)}</strong> · `:''}${esc(flight.carriers)}</div>
+          </div>
+
+          <div class="detail-group dates-group">
+            <div class="detail-title">TARIKH PELEPASAN</div>
+            <div class="date-list">${shownDates.map(d=>`<div class="date-line">${esc(shortDateLabel(d.label))}${(d.tags||[]).includes('syawal') && !/Syawal/i.test(d.label)?' <span class="date-tag">Syawal</span>':''}</div>`).join('')}</div>
+          </div>
+        </div>
+
+        <span class="more">Maklumat Penuh ›</span>
+      </div>`;
     grid.appendChild(a);
   });
 }
