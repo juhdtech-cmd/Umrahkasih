@@ -71,3 +71,42 @@
 @media(prefers-reduced-motion:reduce){
   .uk-ad-backdrop,.uk-ad-popup,.uk-ad-sticky,.uk-ad-popup-media img,.uk-ad-sticky img{transition:none!important}
 }
+
+/* V54.34 — full-poster cross-sell popup */
+.uk-ad-popup.uk-ad-popup-poster{
+  width:min(410px,88vw);
+  max-height:88vh;
+  background:#f8f5ed;
+}
+.uk-ad-popup-poster .uk-ad-popup-poster-media{
+  aspect-ratio:auto;
+  max-height:88vh;
+  overflow:auto;
+  background:#f8f5ed;
+}
+.uk-ad-popup-poster .uk-ad-popup-poster-media img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:center top;
+}
+.uk-ad-popup-poster .uk-ad-popup-poster-cta{
+  position:absolute;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  width:calc(100% - 34px);
+  text-align:center;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.5);
+  background:rgba(13,70,55,.94);
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+  backdrop-filter:blur(5px);
+}
+@media(max-width:520px){
+  .uk-ad-popup.uk-ad-popup-poster{width:min(390px,91vw);max-height:88vh;border-radius:18px}
+  .uk-ad-popup-poster .uk-ad-popup-poster-media{max-height:88vh}
+  .uk-ad-popup-poster .uk-ad-popup-poster-cta{bottom:11px;width:calc(100% - 28px);padding:11px 12px}
+}

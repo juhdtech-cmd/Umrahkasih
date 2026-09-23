@@ -1,29 +1,30 @@
 (()=>{
-  const slides=[
+  // V54.34: Large opening popup is now a cross-sell advert (Haji Mujamalah).
+  // Sticky adverts remain independent and continue rotating every 3 seconds.
+  const popupCampaign={
+    image:'advert-haji-mujamalah.jpg',
+    alt:'Haji Mujamalah Khadim Ummah Holidays'
+  };
+
+  const stickySlides=[
     {
       image:'product-eko-home-mobile.png',
       alt:'Umrah Kasih Eco',
-      kicker:'PAKEJ UMRAH',
       title:'Umrah Kasih Eco',
-      text:'Umrah lebih mampu, perjalanan terurus.',
       price:'Bermula RM5,980',
       href:'product.html?id=eko-normal-9h7m-2026-27'
     },
     {
       image:'product-premium-home-mobile.jpg',
       alt:'Umrah Kasih Premium Musim Sejuk',
-      kicker:'WAKTU KEMUNCAK · MUSIM SEJUK',
       title:'Umrah Kasih Premium',
-      text:'Lebih dekat. Lebih selesa. Lebih terjaga.',
       price:'Bermula RM13,480',
       href:'product.html?id=premium-peak-winter-12h10m-2026-27'
     },
     {
       image:'product-premium-home-mobile.jpg',
       alt:'Umrah Kasih Premium Ramadhan',
-      kicker:'AWAL & PERTENGAHAN RAMADHAN',
       title:'Premium Ramadhan',
-      text:'Ibadah Ramadhan dengan selesa dan dibimbing setiap masa.',
       price:'Bermula RM14,380',
       href:'product.html?id=premium-ramadhan-12h10m-2026-27'
     }
@@ -33,49 +34,39 @@
   const backdrop=document.getElementById('ukAdBackdrop');
   const close=document.getElementById('ukAdClose');
   const pImg=document.getElementById('ukAdPopupImage');
-  const pKicker=document.getElementById('ukAdPopupKicker');
-  const pTitle=document.getElementById('ukAdPopupTitle');
-  const pText=document.getElementById('ukAdPopupText');
-  const pPrice=document.getElementById('ukAdPopupPrice');
   const pCta=document.getElementById('ukAdPopupCta');
-  const dots=document.getElementById('ukAdDots');
   const sticky=document.getElementById('ukAdSticky');
   const sImg=document.getElementById('ukAdStickyImage');
   const sTitle=document.getElementById('ukAdStickyTitle');
   const sPrice=document.getElementById('ukAdStickyPrice');
   if(!popup||!sticky) return;
 
-  let index=0;
   let popupClosed=false;
-  let timer=null;
-  let changeTimer=null;
+  let stickyIndex=0;
+  let stickyTimer=null;
+  let stickyChangeTimer=null;
 
-  dots.innerHTML=slides.map((_,i)=>`<i${i===0?' class="active"':''}></i>`).join('');
+  pImg.src=popupCampaign.image;
+  pImg.alt=popupCampaign.alt;
 
-  function paint(i,animated=true){
-    index=(i+slides.length)%slides.length;
-    const d=slides[index];
-    if(animated){popup.classList.add('is-changing');sticky.classList.add('is-changing')}
-    clearTimeout(changeTimer);
-    changeTimer=setTimeout(()=>{
-      pImg.src=d.image;pImg.alt=d.alt;
-      pKicker.textContent=d.kicker;
-      pTitle.textContent=d.title;
-      pText.textContent=d.text;
-      pPrice.textContent=d.price;
-      pCta.href=d.href;
+  function paintSticky(i,animated=true){
+    stickyIndex=(i+stickySlides.length)%stickySlides.length;
+    const d=stickySlides[stickyIndex];
+    if(animated) sticky.classList.add('is-changing');
+    clearTimeout(stickyChangeTimer);
+    stickyChangeTimer=setTimeout(()=>{
       sImg.src=d.image;
+      sImg.alt=d.alt;
       sTitle.textContent=d.title;
       sPrice.textContent=d.price;
       sticky.href=d.href;
-      [...dots.children].forEach((dot,n)=>dot.classList.toggle('active',n===index));
-      popup.classList.remove('is-changing');sticky.classList.remove('is-changing');
+      sticky.classList.remove('is-changing');
     },animated?170:0);
   }
 
-  function startRotation(){
-    clearInterval(timer);
-    timer=setInterval(()=>paint(index+1),3000);
+  function startStickyRotation(){
+    clearInterval(stickyTimer);
+    stickyTimer=setInterval(()=>paintSticky(stickyIndex+1),3000);
   }
 
   function openPopup(){
@@ -96,15 +87,20 @@
   }
 
   function updateSticky(){
-    // Sticky advert only becomes available after the large popup has been closed.
-    // It softly fades away again when the visitor returns near the top of the page.
     const shouldShow=popupClosed && window.scrollY>260;
     sticky.classList.toggle('is-visible',shouldShow);
     sticky.setAttribute('aria-hidden',shouldShow?'false':'true');
   }
 
-  paint(0,false);
-  startRotation();
+  // Until a dedicated Haji detail page is ready, Maklumat Lanjut opens the existing sales team chooser.
+  pCta.addEventListener('click',e=>{
+    e.preventDefault();
+    closePopup();
+    setTimeout(()=>document.getElementById('waOpen')?.click(),180);
+  });
+
+  paintSticky(0,false);
+  startStickyRotation();
   setTimeout(openPopup,650);
   close.addEventListener('click',closePopup);
   backdrop.addEventListener('click',closePopup);
