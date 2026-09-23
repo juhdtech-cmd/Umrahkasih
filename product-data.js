@@ -160,8 +160,8 @@ window.UMRAH_PRODUCTS = [
     closingText:'Direka khusus untuk jemaah yang mengutamakan keselesaan ketika ibadah Bulan Ramadhan di Tanah Suci, kemudahan perjalanan serta pengalaman Ibadah yang tersusun dengan bimbingan setiap masa oleh Mutawwif berpengalaman.',
     description:'Nikmati Pakej Umrah Kasih Ramadan 12 Hari 10 Malam Khas untuk anda yang ingin merebut ganjaran pahala Ramadan di bumi Makkah, penekanan kepada keselesaan, pengurusan yang teratur serta pengisian rohani yang lebih eksklusif.',
     departures:[
-      {label:'5 Febuari – 15 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Awal Ramadhan']},
-      {label:'15 Febuari – 25 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Pertengahan Ramadhan']}
+      {label:'Awal Ramadhan · 5 Febuari – 15 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Awal Ramadhan']},
+      {label:'Pertengahan Ramadhan · 15 Febuari – 25 Febuari 2027', months:['Feb'], tags:['ramadhan'], periods:['Pertengahan Ramadhan']}
     ],
     rooms:[
       ['Berempat Sebilik',14380],
@@ -199,6 +199,77 @@ window.UMRAH_PRODUCTS = [
       {text:'Set Bagasi Khadim Ummah Holidays',subitems:['Bagasi 24”','Bagasi 20”','Sling Bag','Beg Kasut','Buku Umrah']},
       'Perlindungan Insurans Kelompok Takaful Malaysia',
       'Takaful Perubatan Pesakit Luar Premium Al-Khairi Care',
+      'Kursus Umrah'
+    ],
+    excluded:[
+      'Takaful Perjalanan Etiqa 360',
+      'Lebihan berat bagasi',
+      'Perkhidmatan Room Service',
+      'Visa On Arrival sekiranya permohonan visa atas talian ditolak',
+      'Kos perubatan dan pengurusan kematian'
+    ],
+    registration:[
+      'Pilih jenis bilik dan tarikh penerbangan pakej Umrah anda.',
+      'Tekan butang SAYA BERMINAT di bawah.',
+      'Buat pembayaran deposit RM1,000 / seorang.',
+      {text:'Khadim Ummah Holidays Sdn Bhd',subitems:['Maybank','5521 8956 5759']},
+      'Bayaran penuh hendaklah diselesaikan 60 hari sebelum tarikh penerbangan.',
+      {text:'Serahkan soft copy melalui WhatsApp atau e-mel dalam tempoh 7 hari selepas pendaftaran, atau selewat-lewatnya 60 hari sebelum tarikh penerbangan.',subitems:['Passport','Gambar']},
+      'Simpan invois dan resit pembayaran untuk rujukan.'
+    ]
+  }
+,
+  {
+    id:'standard-ramadhan-12h10m-2027',
+    series:'standard',
+    name:'UMRAH KASIH RAMADHAN',
+    season:'Bulan Ramadhan',
+    seasonCode:'ramadhan',
+    duration:'12 Hari 10 Malam',
+    from:9580,
+    tagline:'Ibadah Ramadhan dengan selesa dan dibimbing seriap masa.',
+    closingTagline:'Ibadah Ramadhan dengan selesa dan dibimbing seriap masa.',
+    closingText:'Direka khusus untuk jemaah yang mengutamakan keselesaan ketika ibadah Bulan Ramadhan di Tanah Suci, kemudahan perjalanan serta pengalaman Ibadah yang tersusun dengan bimbingan setiap masa oleh Mutawwif berpengalaman.',
+    description:'Nikmati Pakej Umrah Kasih Ramadan 12 Hari 10 Malam Khas untuk anda yang ingin merebut ganjaran pahala Ramadan di bumi Makkah, penekanan kepada keselesaan, pengurusan yang teratur serta pengisian rohani yang lebih eksklusif.',
+    departures:[
+      {label:'Awal Ramadhan · 5 Feb – 15 Feb 2027', months:['Feb'], tags:['ramadhan'], periods:['Awal Ramadhan']},
+      {label:'Pertengahan Ramadhan · 15 Feb – 25 Feb 2027', months:['Feb'], tags:['ramadhan'], periods:['Pertengahan Ramadhan']}
+    ],
+    rooms:[
+      ['Berempat Sebilik',9580],
+      ['Bertiga Sebilik',10380],
+      ['Berdua Sebilik',11980]
+    ],
+    experiences:[
+      {title:'Bimbingan Munajat',text:'Seriap hari diisi dengan ibadah di Masjidil Haram, setiap malam dihiasi dengan tarawih dan munajat.'},
+      {title:'Ziarah Istimewa — Jabal Nur & Gua Hira’',text:'Menelusuri lokasi penuh sejarah yang berkait rapat dengan permulaan risalah Nabi Muhammad SAW.'},
+      {title:'Ziarah',text:'29 Tempat Ziarah sejarah Islam dan kisah para Sahabat bersama Baginda Nabi Muhammad SAW'}
+    ],
+    hotels:[
+      ['Makkah','Snood Ajyad @ setaraf','Anggaran jarak: 450m · 6 malam'],
+      ['Madinah','Arkal Al Manar @ setaraf','Anggaran jarak: 150m · 4 malam']
+    ],
+    flight:'Qatar Airways | Emirates @ Setaraf · Kelas Ekonomi',
+    flightDetails:[
+      {name:'Qatar Airways',logo:'airline-qatar.webp',class:'Kelas Ekonomi'},
+      {name:'Emirates',logo:'airline-emirates.webp',class:'Kelas Ekonomi'}
+    ],
+    flightNote:'Qatar Airways / Emirates @ Setaraf',
+    children:[
+      'Kanak-kanak 12 tahun ke bawah: Diskaun RM300',
+      'Kanak-kanak 5 tahun ke bawah tanpa katil: Diskaun RM500',
+      'Bayi bawah 2 tahun: RM3,000 sahaja'
+    ],
+    included:[
+      'Tiket penerbangan kelas Ekonomi',
+      'Penginapan hotel seperti yang dinyatakan',
+      'Visa Pelancong / Visa Umrah',
+      'Pengangkutan bas berhawa dingin',
+      'Perkhidmatan Mutawwif berpengalaman bagi Umrah dan ziarah, mengiringi jemaah dari Malaysia',
+      'Perkhidmatan Pengiring berpengalaman bermula dari Malaysia',
+      'Perkhidmatan Ground Handling di Makkah dan Madinah',
+      'Sling Bag dan Bag Kasut',
+      'Perlindungan Insurans Kelompok Takaful Malaysia',
       'Kursus Umrah'
     ],
     excluded:[
