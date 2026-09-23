@@ -5,8 +5,38 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Umrah Kasih</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="advert.css">
 </head>
 <body>
+
+<!-- V54.33 — UmrahKasih Advert: opening popup + scroll sticky banner -->
+<div class="uk-ad-backdrop" id="ukAdBackdrop" aria-hidden="true"></div>
+<section class="uk-ad-popup" id="ukAdPopup" aria-label="Promosi UmrahKasih" aria-hidden="true">
+  <button class="uk-ad-close" id="ukAdClose" type="button" aria-label="Tutup iklan">×</button>
+  <div class="uk-ad-popup-media">
+    <img id="ukAdPopupImage" src="product-eko-home-mobile.png" alt="Umrah Kasih Eco">
+    <div class="uk-ad-dots" id="ukAdDots" aria-hidden="true"></div>
+  </div>
+  <div class="uk-ad-popup-copy">
+    <div>
+      <small id="ukAdPopupKicker">PAKEJ UMRAH</small>
+      <h2 id="ukAdPopupTitle">Umrah Kasih Eco</h2>
+      <p id="ukAdPopupText">Umrah lebih mampu, perjalanan terurus.</p>
+      <strong id="ukAdPopupPrice">Bermula RM5,980</strong>
+    </div>
+    <a class="uk-ad-popup-cta" id="ukAdPopupCta" href="product.html?id=eko-normal-9h7m-2026-27">Maklumat Lanjut ›</a>
+  </div>
+</section>
+
+<a class="uk-ad-sticky" id="ukAdSticky" href="product.html?id=eko-normal-9h7m-2026-27" aria-label="Maklumat lanjut promosi UmrahKasih" aria-hidden="true">
+  <img id="ukAdStickyImage" src="product-eko-home-mobile.png" alt="">
+  <span class="uk-ad-sticky-shade"></span>
+  <span class="uk-ad-sticky-copy">
+    <b id="ukAdStickyTitle">Umrah Kasih Eco</b>
+    <small id="ukAdStickyPrice">Bermula RM5,980</small>
+  </span>
+  <span class="uk-ad-sticky-cta">Maklumat Lanjut ›</span>
+</a>
 <div class="announcement">
   <span>📣 <span data-ms="Pendaftaran musim Umrah 2026/27 kini dibuka" data-en="Umrah 2026/27 registration is now open">Pendaftaran musim Umrah 2026/27 kini dibuka</span></span>
   <a href="#packages" data-ms="Lihat pelepasan →" data-en="View departures →">Lihat pelepasan →</a>
@@ -305,6 +335,7 @@
 </section>
 
 <script src="app.js"></script>
+<script src="advert.js"></script>
 <script>
 (()=>{const open=document.getElementById('waOpen'),panel=document.getElementById('waPanel'),back=document.getElementById('waBackdrop'),close=document.getElementById('waClose');function show(){back.hidden=false;panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');open.setAttribute('aria-expanded','true')}function hide(){panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');open.setAttribute('aria-expanded','false');setTimeout(()=>back.hidden=true,180)}open.addEventListener('click',show);close.addEventListener('click',hide);back.addEventListener('click',hide);document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()})})();
 </script>
