@@ -1,0 +1,4 @@
+import { auth, firebaseReady, authEmailFromId } from './firebase-client.js';
+import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
+const form=document.getElementById('loginForm'),err=document.getElementById('loginError'),btn=document.getElementById('loginBtn');
+form.addEventListener('submit',async e=>{e.preventDefault();err.hidden=true;if(!firebaseReady){err.textContent='Firebase belum disambungkan. Isi firebase-config.js dahulu.';err.hidden=false;return}const fd=new FormData(form);btn.disabled=true;btn.textContent='Menyemak…';try{await signInWithEmailAndPassword(auth,authEmailFromId(fd.get('id')),fd.get('password'));location.href='musawwiq-dashboard.html'}catch(ex){err.textContent='ID Musawwiq atau password tidak tepat.';err.hidden=false}finally{btn.disabled=false;btn.textContent='Log Masuk ›'}});

@@ -1,0 +1,12 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b4b3a"><title>Dashboard Musawwiq | UmrahKasih</title><link rel="stylesheet" href="musawwiq.css"></head><body class="mw-dashboard-page">
+<header class="mw-topbar"><a class="mw-brand" href="index.html"><img src="logo-primary.png" alt="UmrahKasih"></a><button id="logoutBtn" class="mw-back mw-button-link">Log Keluar</button></header>
+<main class="mw-dashboard" id="dashboard" hidden><div class="mw-shell">
+<section class="mw-dash-welcome"><p class="mw-kicker">MUSAWWIQ DASHBOARD</p><h1>Assalamualaikum, <span id="name">Musawwiq</span></h1><p>ID: <strong id="mwId">—</strong></p></section>
+<section class="mw-ref-card"><div><span>PAUTAN REFERRAL ANDA</span><input id="referralUrl" readonly></div><div class="mw-ref-actions"><button id="copyRef">Copy Link</button><button id="shareRef">Share</button></div></section>
+<section class="mw-stats"><article><span>User Asking</span><strong id="statEnquiries">0</strong></article><article><span>Potential Commission</span><strong id="statPotential">RM0</strong></article><article><span>Confirmed</span><strong id="statConfirmed">RM0</strong></article><article><span>Paid</span><strong id="statPaid">RM0</strong></article></section>
+<section class="mw-dash-section"><div class="mw-section-head"><div><p class="mw-kicker">USER ENQUIRY</p><h2>Pertanyaan Terkini</h2></div></div><div id="leadsList" class="mw-list"><div class="mw-empty">Belum ada pertanyaan pelanggan melalui referral anda.</div></div></section>
+<section class="mw-dash-section"><div class="mw-section-head"><div><p class="mw-kicker">KOMISEN</p><h2>Status Komisen</h2></div></div><div id="commissionList" class="mw-list"><div class="mw-empty">Belum ada rekod komisen.</div></div></section>
+<section class="mw-dash-section"><div class="mw-section-head"><div><p class="mw-kicker">MARKETING MATERIAL</p><h2>Bahan Promosi</h2></div></div><div id="marketingList" class="mw-material-grid"><div class="mw-empty">Bahan marketing akan dipaparkan di sini selepas admin upload.</div></div></section>
+</div></main>
+<div id="loading" class="mw-loading">Memuatkan dashboard…</div>
+<script src="firebase-config.js"></script><script type="module" src="musawwiq-dashboard.js"></script></body></html>

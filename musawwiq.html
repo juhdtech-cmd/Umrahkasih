@@ -9,10 +9,8 @@
 </head>
 <body>
   <header class="mw-topbar">
-    <a class="mw-brand" href="index.html" aria-label="Kembali ke UmrahKasih">
-      <img src="logo-primary.png" alt="UmrahKasih">
-    </a>
-    <a class="mw-back" href="index.html">Kembali</a>
+    <a class="mw-brand" href="index.html" aria-label="Kembali ke UmrahKasih"><img src="logo-primary.png" alt="UmrahKasih"></a>
+    <a class="mw-back" href="musawwiq-login.html">Log Masuk</a>
   </header>
 
   <main>
@@ -20,8 +18,7 @@
       <div class="mw-shell">
         <p class="mw-kicker">JADI SEBAHAGIAN DARIPADA UMRAHKASIH</p>
         <h1>Bantu Mereka Menuju Baitullah.<br>Jana Pendapatan Bersama Kami.</h1>
-        <p class="mw-lead">Daftar sebagai Musawwiq UmrahKasih dan bantu memperkenalkan perjalanan UmrahKasih kepada keluarga, sahabat dan komuniti anda.</p>
-        <div class="mw-note">Selepas pendaftaran disemak dan diluluskan, kod Musawwiq serta pautan rujukan anda akan diaktifkan.</div>
+        <p class="mw-lead">Daftar sebagai Musawwiq UmrahKasih. Selepas pendaftaran berjaya, anda akan menerima ID Musawwiq kekal dan pautan referral sendiri.</p>
       </div>
     </section>
 
@@ -29,107 +26,49 @@
       <div class="mw-shell">
         <div class="mw-card">
           <div class="mw-card-head">
-            <span>PERMOHONAN MUSAWWIQ</span>
-            <h2>Maklumat Pendaftaran</h2>
-            <p>Lengkapkan maklumat di bawah. Semua ruangan bertanda wajib perlu diisi.</p>
+            <span>PENDAFTARAN MUSAWWIQ</span>
+            <h2>Buka Akaun Musawwiq</h2>
+            <p>ID Musawwiq anda akan dijana secara automatik. Gunakan ID tersebut bersama password untuk log masuk.</p>
           </div>
 
           <form id="musawwiqForm" novalidate>
             <div class="mw-grid">
-              <label class="mw-field mw-full">
-                <span>Nama Penuh</span>
-                <input name="nama" type="text" autocomplete="name" required>
-              </label>
+              <label class="mw-field mw-full"><span>Nama Penuh</span><input name="nama" type="text" autocomplete="name" required></label>
+              <label class="mw-field mw-full"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
 
-              <label class="mw-field mw-full">
-                <span>Email</span>
-                <input name="email" type="email" autocomplete="email" required>
-              </label>
+              <label class="mw-field"><span>Negara</span><select name="negara" id="negara" required>
+                <option value="">Pilih negara</option><option value="MY">Malaysia</option><option value="ID">Indonesia</option><option value="BN">Brunei</option>
+              </select></label>
+              <label class="mw-field"><span>Negeri / Provinsi</span><select name="negeri" id="negeri" required disabled><option value="">Pilih negara dahulu</option></select></label>
 
-              <label class="mw-field">
-                <span>Negara</span>
-                <select name="negara" id="negara" required>
-                  <option value="">Pilih negara</option>
-                  <option value="MY">Malaysia</option>
-                  <option value="ID">Indonesia</option>
-                  <option value="BN">Brunei</option>
-                </select>
-              </label>
+              <label class="mw-field mw-full"><span>No. Telefon / WhatsApp</span><div class="mw-phone-wrap"><span id="phoneCode" class="mw-phone-code">+60</span><input name="telefon" id="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="12 345 6789" required></div></label>
+              <label class="mw-field mw-full"><span id="securityLabel">No. Kad Pengenalan / Dokumen</span><input name="security" id="security" type="text" autocomplete="off" required></label>
 
-              <label class="mw-field">
-                <span>Negeri / Provinsi</span>
-                <select name="negeri" id="negeri" required disabled>
-                  <option value="">Pilih negara dahulu</option>
-                </select>
-              </label>
+              <fieldset class="mw-choice mw-full"><legend>Sudah pernah menunaikan Umrah?</legend><div><label><input type="radio" name="umrah" value="Ya" required><span>Ya</span></label><label><input type="radio" name="umrah" value="Belum"><span>Belum</span></label></div></fieldset>
+              <fieldset class="mw-choice mw-full"><legend>Sudah pernah menunaikan Haji?</legend><div><label><input type="radio" name="haji" value="Ya" required><span>Ya</span></label><label><input type="radio" name="haji" value="Belum"><span>Belum</span></label></div></fieldset>
 
-              <label class="mw-field mw-full">
-                <span>No. Telefon / WhatsApp</span>
-                <div class="mw-phone-wrap">
-                  <span id="phoneCode" class="mw-phone-code">+60</span>
-                  <input name="telefon" id="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="12 345 6789" required>
-                </div>
-              </label>
+              <label class="mw-field mw-full"><span>Password</span><input name="password" id="password" type="password" minlength="8" autocomplete="new-password" required></label>
+              <label class="mw-field mw-full"><span>Ulang Password</span><input name="password2" id="password2" type="password" minlength="8" autocomplete="new-password" required></label>
 
-              <label class="mw-field mw-full">
-                <span id="securityLabel">No. Kad Pengenalan / Dokumen</span>
-                <input name="security" id="security" type="text" autocomplete="off" required>
-              </label>
-
-              <fieldset class="mw-choice mw-full">
-                <legend>Sudah pernah menunaikan Umrah?</legend>
-                <div>
-                  <label><input type="radio" name="umrah" value="Ya" required><span>Ya</span></label>
-                  <label><input type="radio" name="umrah" value="Belum"><span>Belum</span></label>
-                </div>
-              </fieldset>
-
-              <fieldset class="mw-choice mw-full">
-                <legend>Sudah pernah menunaikan Haji?</legend>
-                <div>
-                  <label><input type="radio" name="haji" value="Ya" required><span>Ya</span></label>
-                  <label><input type="radio" name="haji" value="Belum"><span>Belum</span></label>
-                </div>
-              </fieldset>
-
-              <label class="mw-consent mw-full">
-                <input type="checkbox" name="setuju" required>
-                <span>Saya mengesahkan maklumat yang diberikan adalah benar dan bersetuju untuk dihubungi oleh pihak UmrahKasih / Khadim Ummah Holidays berkaitan permohonan Musawwiq ini.</span>
-              </label>
+              <label class="mw-consent mw-full"><input type="checkbox" name="setuju" required><span>Saya mengesahkan maklumat yang diberikan adalah benar dan bersetuju dengan penggunaan data bagi pengurusan akaun Musawwiq UmrahKasih.</span></label>
             </div>
-
             <p id="formError" class="mw-error" role="alert" hidden></p>
-            <button class="mw-submit" type="submit">Hantar Pendaftaran <b>›</b></button>
+            <button class="mw-submit" id="submitBtn" type="submit">Daftar Akaun <b>›</b></button>
           </form>
-        </div>
-      </div>
-    </section>
 
-    <section class="mw-how">
-      <div class="mw-shell">
-        <p class="mw-kicker">SELEPAS MENDAFTAR</p>
-        <h2>Proses Ringkas</h2>
-        <div class="mw-steps">
-          <div><strong>01</strong><p>Hantar maklumat pendaftaran.</p></div>
-          <div><strong>02</strong><p>Pasukan UmrahKasih membuat semakan.</p></div>
-          <div><strong>03</strong><p>Selepas diluluskan, kod Musawwiq dan pautan rujukan akan diberikan.</p></div>
+          <div id="successBox" class="mw-success" hidden>
+            <p class="mw-kicker">PENDAFTARAN BERJAYA</p>
+            <h2>ID Musawwiq Anda</h2>
+            <div class="mw-id-box" id="newMusawwiqId">—</div>
+            <p>Simpan ID ini. Anda akan menggunakannya bersama password untuk log masuk.</p>
+            <a class="mw-submit mw-link-button" href="musawwiq-login.html">Log Masuk Sekarang ›</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="mw-modal" id="staffModal" hidden>
-    <div class="mw-modal-backdrop" data-close-modal></div>
-    <div class="mw-modal-panel" role="dialog" aria-modal="true" aria-labelledby="mwModalTitle">
-      <button type="button" class="mw-modal-close" data-close-modal aria-label="Tutup">×</button>
-      <p class="mw-kicker">HANTAR PERMOHONAN</p>
-      <h2 id="mwModalTitle">Pilih Pasukan UmrahKasih</h2>
-      <p class="mw-modal-text">Maklumat pendaftaran anda akan dihantar melalui WhatsApp kepada pasukan pilihan anda untuk semakan.</p>
-      <div class="mw-staff" id="staffList"></div>
-      <p class="mw-ref" id="applicationRef"></p>
-    </div>
-  </div>
-
-  <script src="musawwiq.js"></script>
+  <script src="firebase-config.js"></script>
+  <script type="module" src="musawwiq.js"></script>
 </body>
 </html>

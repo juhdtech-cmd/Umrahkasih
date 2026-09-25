@@ -1,116 +1,12 @@
-(() => {
-  const states = {
-    MY:['Johor','Kedah','Kelantan','Melaka','Negeri Sembilan','Pahang','Perak','Perlis','Pulau Pinang','Sabah','Sarawak','Selangor','Terengganu','W.P. Kuala Lumpur','W.P. Labuan','W.P. Putrajaya'],
-    ID:['Aceh','Sumatera Utara','Sumatera Barat','Riau','Kepulauan Riau','Jambi','Sumatera Selatan','Bangka Belitung','Bengkulu','Lampung','Banten','DKI Jakarta','Jawa Barat','Jawa Tengah','DI Yogyakarta','Jawa Timur','Bali','Nusa Tenggara Barat','Nusa Tenggara Timur','Kalimantan Barat','Kalimantan Tengah','Kalimantan Selatan','Kalimantan Timur','Kalimantan Utara','Sulawesi Utara','Gorontalo','Sulawesi Tengah','Sulawesi Barat','Sulawesi Selatan','Sulawesi Tenggara','Maluku','Maluku Utara','Papua Barat','Papua'],
-    BN:['Brunei-Muara','Belait','Tutong','Temburong']
-  };
-  const country = document.getElementById('negara');
-  const state = document.getElementById('negeri');
-  const phoneCode = document.getElementById('phoneCode');
-  const securityLabel = document.getElementById('securityLabel');
-  const form = document.getElementById('musawwiqForm');
-  const error = document.getElementById('formError');
-  const modal = document.getElementById('staffModal');
-  const staffList = document.getElementById('staffList');
-  const applicationRef = document.getElementById('applicationRef');
-  let message = '';
+import { auth, db, firebaseReady, makeMusawwiqId, authEmailFromId } from './firebase-client.js';
+import { createUserWithEmailAndPassword, deleteUser } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
+import { doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
 
-  const staff = [
-    ['Ustaz Fadh','60135890865'],
-    ['Ustaz Ihsan','60134599260'],
-    ['Ustaz Amirul','60129761791'],
-    ['Cik Sakinah','60124964772'],
-    ['Cik Aqilah','60192549107'],
-    ['Puan Su','60175848295']
-  ];
-
-  function updateCountry(){
-    const code = country.value;
-    state.innerHTML = '';
-    if(!code){
-      state.disabled = true;
-      state.innerHTML = '<option value="">Pilih negara dahulu</option>';
-      phoneCode.textContent = '+60';
-      securityLabel.textContent = 'No. Kad Pengenalan / Dokumen';
-      return;
-    }
-    state.disabled = false;
-    state.innerHTML = '<option value="">Pilih negeri / provinsi</option>' + states[code].map(x=>`<option value="${x}">${x}</option>`).join('');
-    phoneCode.textContent = code==='MY'?'+60':code==='ID'?'+62':'+673';
-    securityLabel.textContent = code==='MY'?'No. Kad Pengenalan (IC)':code==='ID'?'No. KTP / Passport':'No. Passport / Dokumen Pengenalan';
-  }
-
-  function radioValue(name){
-    const el = form.querySelector(`input[name="${name}"]:checked`);
-    return el ? el.value : '';
-  }
-
-  function makeRef(){
-    const d = new Date();
-    const p = n => String(n).padStart(2,'0');
-    return `MW-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${String(d.getTime()).slice(-5)}`;
-  }
-
-  function buildMessage(ref){
-    const fd = new FormData(form);
-    const code = country.value==='MY'?'+60':country.value==='ID'?'+62':'+673';
-    const rawPhone = String(fd.get('telefon')||'').replace(/\D/g,'').replace(/^0+/, '');
-    return [
-      '*PERMOHONAN MUSAWWIQ UMRAHKASIH*',
-      `No. Rujukan: ${ref}`,
-      '',
-      `Nama: ${fd.get('nama')}`,
-      `Email: ${fd.get('email')}`,
-      `Telefon: ${code}${rawPhone}`,
-      `Negara: ${fd.get('negara')}`,
-      `Negeri/Provinsi: ${fd.get('negeri')}`,
-      `No. Pengenalan/Dokumen: ${fd.get('security')}`,
-      `Sudah Umrah: ${radioValue('umrah')}`,
-      `Sudah Haji: ${radioValue('haji')}`,
-      '',
-      'Mohon semakan dan pengaktifan akaun Musawwiq.'
-    ].join('\n');
-  }
-
-  function openModal(ref){
-    applicationRef.textContent = `No. Rujukan permohonan: ${ref}`;
-    staffList.innerHTML = staff.map(([name,number]) => `<button type="button" data-wa="${number}">${name}<span>›</span></button>`).join('');
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal(){
-    modal.hidden = true;
-    document.body.style.overflow = '';
-  }
-
-  country.addEventListener('change', updateCountry);
-  updateCountry();
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    error.hidden = true;
-    if(!form.checkValidity()){
-      error.textContent = 'Sila lengkapkan semua maklumat wajib sebelum menghantar pendaftaran.';
-      error.hidden = false;
-      form.reportValidity();
-      return;
-    }
-    const ref = makeRef();
-    message = buildMessage(ref);
-    try { localStorage.setItem('umrahkasih_musawwiq_draft', JSON.stringify({ref,createdAt:new Date().toISOString()})); } catch(e){}
-    openModal(ref);
-  });
-
-  staffList.addEventListener('click', e => {
-    const btn = e.target.closest('[data-wa]');
-    if(!btn) return;
-    const url = `https://wa.me/${btn.dataset.wa}?text=${encodeURIComponent(message)}`;
-    window.open(url,'_blank','noopener');
-  });
-
-  modal.addEventListener('click', e => {
-    if(e.target.matches('[data-close-modal]')) closeModal();
-  });
-  document.addEventListener('keydown', e => { if(e.key==='Escape' && !modal.hidden) closeModal(); });
-})();
+const states={MY:['Johor','Kedah','Kelantan','Melaka','Negeri Sembilan','Pahang','Perak','Perlis','Pulau Pinang','Sabah','Sarawak','Selangor','Terengganu','W.P. Kuala Lumpur','W.P. Labuan','W.P. Putrajaya'],ID:['Aceh','Sumatera Utara','Sumatera Barat','Riau','Kepulauan Riau','Jambi','Sumatera Selatan','Bangka Belitung','Bengkulu','Lampung','Banten','DKI Jakarta','Jawa Barat','Jawa Tengah','DI Yogyakarta','Jawa Timur','Bali','Nusa Tenggara Barat','Nusa Tenggara Timur','Kalimantan Barat','Kalimantan Tengah','Kalimantan Selatan','Kalimantan Timur','Kalimantan Utara','Sulawesi Utara','Gorontalo','Sulawesi Tengah','Sulawesi Barat','Sulawesi Selatan','Sulawesi Tenggara','Maluku','Maluku Utara','Papua Barat','Papua'],BN:['Brunei-Muara','Belait','Tutong','Temburong']};
+const form=document.getElementById('musawwiqForm'),country=document.getElementById('negara'),state=document.getElementById('negeri'),phoneCode=document.getElementById('phoneCode'),securityLabel=document.getElementById('securityLabel'),error=document.getElementById('formError'),submitBtn=document.getElementById('submitBtn'),successBox=document.getElementById('successBox');
+function updateCountry(){const c=country.value;state.innerHTML='';if(!c){state.disabled=true;state.innerHTML='<option value="">Pilih negara dahulu</option>';phoneCode.textContent='+60';return}state.disabled=false;state.innerHTML='<option value="">Pilih negeri / provinsi</option>'+states[c].map(x=>`<option>${x}</option>`).join('');phoneCode.textContent=c==='MY'?'+60':c==='ID'?'+62':'+673';securityLabel.textContent=c==='MY'?'No. Kad Pengenalan (IC)':c==='ID'?'No. KTP / Passport':'No. Passport / Dokumen Pengenalan'}
+country.addEventListener('change',updateCountry);updateCountry();
+function radio(name){return form.querySelector(`input[name="${name}"]:checked`)?.value||''}
+function fullPhone(c,v){const code=c==='MY'?'60':c==='ID'?'62':'673';return '+'+code+String(v||'').replace(/\D/g,'').replace(/^0+/,'')}
+function showError(msg){error.textContent=msg;error.hidden=false}
+form.addEventListener('submit',async e=>{e.preventDefault();error.hidden=true;if(!form.checkValidity()){form.reportValidity();return}if(!firebaseReady){showError('Firebase belum disambungkan. Isi firebase-config.js dahulu sebelum pendaftaran live digunakan.');return}const fd=new FormData(form);if(fd.get('password')!==fd.get('password2')){showError('Password dan ulang password tidak sama.');return}submitBtn.disabled=true;submitBtn.textContent='Mendaftar…';let cred=null;try{let id,authEmail;for(let i=0;i<4;i++){id=makeMusawwiqId(fd.get('negara'));authEmail=authEmailFromId(id);try{cred=await createUserWithEmailAndPassword(auth,authEmail,fd.get('password'));break}catch(err){if(err.code!=='auth/email-already-in-use')throw err}}if(!cred)throw new Error('ID generation failed');const security=String(fd.get('security')||'').replace(/\s/g,'');const referralCode=id;await setDoc(doc(db,'musawwiqProfiles',cred.user.uid),{musawwiqId:id,referralCode,name:String(fd.get('nama')).trim(),email:String(fd.get('email')).trim().toLowerCase(),phone:fullPhone(fd.get('negara'),fd.get('telefon')),country:fd.get('negara'),state:fd.get('negeri'),securityLast4:security.slice(-4),hasUmrah:radio('umrah')==='Ya',hasHajj:radio('haji')==='Ya',status:'active',summary:{referralClicks:0,enquiries:0,potentialCommission:0,confirmedCommission:0,paidCommission:0},createdAt:serverTimestamp(),updatedAt:serverTimestamp()});await setDoc(doc(db,'referralPublic',referralCode),{musawwiqUid:cred.user.uid,active:true});form.hidden=true;document.getElementById('newMusawwiqId').textContent=id;successBox.hidden=false}catch(err){if(cred?.user){try{await deleteUser(cred.user)}catch(_){}}showError(err.code==='auth/weak-password'?'Password mesti sekurang-kurangnya 8 aksara.':'Pendaftaran tidak berjaya. Sila cuba semula.');console.error(err)}finally{submitBtn.disabled=false;submitBtn.innerHTML='Daftar Akaun <b>›</b>'}});
