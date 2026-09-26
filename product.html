@@ -1,7 +1,33 @@
-<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Maklumat Pakej | UmrahKasih</title><link rel="stylesheet" href="product.css"></head><body>
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Maklumat Pakej | UmrahKasih</title><link rel="stylesheet" href="product.css"><link rel="stylesheet" href="customer-enquiry.css?v=54.44"></head><body>
 <header class="top"><a href="index.html"><img src="logo-primary.png" alt="UmrahKasih"></a><a href="results.html">‹ Pakej</a></header>
 <main class="wrap" id="app"></main><div class="cta"><div class="inner"><div><small id="chosen">Pilih tarikh & bilik</small><strong id="chosenPrice"></strong></div><a id="interest" href="#">Saya Berminat ›</a></div></div>
-<script src="product-data.js"></script><script>
+
+<section class="uk-enquiry-modal" id="ukEnquiryModal" hidden aria-hidden="true" aria-labelledby="ukEnquiryTitle">
+  <div class="uk-enquiry-backdrop" data-enquiry-close></div>
+  <div class="uk-enquiry-card" role="dialog" aria-modal="true">
+    <button class="uk-enquiry-close" type="button" data-enquiry-close aria-label="Tutup">×</button>
+    <div id="ukEnquiryFormView">
+      <span class="uk-enquiry-kicker">PERTANYAAN PAKEJ</span>
+      <h2 id="ukEnquiryTitle">Saya Berminat</h2>
+      <p class="uk-enquiry-intro">Tinggalkan nama dan nombor telefon. Pasukan jualan UmrahKasih akan menghubungi anda.</p>
+      <div class="uk-enquiry-package" id="ukEnquiryPackage"></div>
+      <form id="ukEnquiryForm">
+        <label>Nama<input id="ukCustomerName" name="name" autocomplete="name" required maxlength="80" placeholder="Nama penuh"></label>
+        <label>No. Telefon / WhatsApp<input id="ukCustomerPhone" name="phone" autocomplete="tel" inputmode="tel" required maxlength="24" placeholder="Contoh: 0123456789"></label>
+        <div class="uk-enquiry-error" id="ukEnquiryError" hidden></div>
+        <button class="uk-enquiry-submit" id="ukEnquirySubmit" type="submit">Hantar Pertanyaan ›</button>
+      </form>
+      <small class="uk-enquiry-ref" id="ukEnquiryRef"></small>
+    </div>
+    <div class="uk-enquiry-success" id="ukEnquirySuccess" hidden>
+      <span class="uk-enquiry-kicker">PERTANYAAN DITERIMA</span>
+      <h2>Terima kasih.</h2>
+      <p>Pasukan jualan UmrahKasih akan menghubungi anda melalui nombor yang diberikan.</p>
+      <button type="button" data-enquiry-close>Tutup</button>
+    </div>
+  </div>
+</section>
+<script src="product-data.js"></script><script src="referral.js?v=54.44"></script><script>
 const params=new URLSearchParams(location.search);
 const id=params.get('id')||'eko-normal-9h7m-2026-27';
 const p=UMRAH_PRODUCTS.find(x=>x.id===id),app=document.getElementById('app');
@@ -25,8 +51,9 @@ function sync(){
   document.getElementById('chosenPrice').textContent=price?'RM'+Number(price).toLocaleString():'';
   const msg=`Assalamualaikum, saya berminat dengan ${p.name} (${p.season})${date?' · '+date:''}${room?' · '+room:''}${price?' · RM'+Number(price).toLocaleString():''}.`;
   document.getElementById('interest').href='https://wa.me/60135890865?text='+encodeURIComponent(msg);
+  window.UmrahProductState=()=>({packageId:p.id,packageName:p.name,season:p.season,duration:p.duration,departure:date,room,price:Number(price||0)});
 }
 document.querySelectorAll('#dates .chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('#dates .chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');date=b.textContent;sync()});
 document.querySelectorAll('#rooms .room').forEach(b=>b.onclick=()=>{document.querySelectorAll('#rooms .room').forEach(x=>x.classList.remove('active'));b.classList.add('active');room=b.childNodes[0].textContent.trim();price=b.dataset.price;sync()});
 sync();
-</script></body></html>
+</script><script type="module" src="customer-enquiry.js?v=54.44"></script></body></html>
