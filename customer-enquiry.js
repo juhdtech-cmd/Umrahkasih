@@ -91,7 +91,7 @@ form.addEventListener('submit',async e=>{
     }
     $('ukEnquirySuccess').hidden=false;
   }catch(ex){
-    console.error(ex);
+    console.error('UmrahKasih enquiry Firestore error:', ex);
     if(ex.message==='invalid-referral'){
       err.textContent='Pautan Musawwiq ini tidak aktif. Anda masih boleh teruskan pertanyaan melalui WhatsApp.';
     }else{

@@ -24,8 +24,7 @@ service cloud.firestore {
 
     match /leads/{leadId} {
       allow read: if isStaff() || (signedIn() && resource.data.musawwiqUid == request.auth.uid);
-      allow create: if request.auth == null
-        && request.resource.data.keys().hasOnly([
+      allow create: if request.resource.data.keys().hasOnly([
           'customerName','customerPhone','packageId','packageName','packageSeason','departure','room','quotedPrice',
           'referralCode','musawwiqUid','status','potentialCommission','createdAt'
         ])
